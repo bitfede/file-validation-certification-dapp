@@ -8,6 +8,6 @@ contract Authenticity {
   }
 
   function get() public view returns (uint) {
-    return storedData;
+    return storedData + 1;
   }
 }
