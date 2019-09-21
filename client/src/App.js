@@ -44,15 +44,32 @@ class App extends Component {
     const { accounts, contract } = this.state;
     // console.log(this.state, "##################")
     // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+    await contract.methods.set(124).send({ from: accounts[0] });
 
     // // Get the value from the contract to prove it worked.
     const response = await contract.methods.get().call();
-    console.log(response, "asdasd-----")
+    console.log(response, "runexample method-----")
     //
     // // Update state with the result.
     this.setState({ storageValue: response });
   };
+
+  refreshValue = async () => {
+    const { accounts, contract } = this.state;
+
+    //call the get method of the contract
+    const response = await contract.methods.get().call();
+    //debug
+    console.log(response, "refreshValue method-----")
+    //update the state with new value
+    this.setState({storageValue: response})
+  }
+
+  uploadFile = async (e) => {
+    console.log("*******")
+    const file = e.target.files[0]
+    console.log(file)
+  }
 
   render() {
     if (!this.state.web3) {
@@ -60,20 +77,30 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
-        </p>
+        <h1>Certify the Existence of your file</h1>
+        <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="#">Click here to learn more</a>.</p>
+        <h2>Upload your file</h2>
+        <div id="fileUplCont">
+          <input type="file" id="fileCert" onChange={(e) => this.uploadFile(e)} />
+        </div>
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
         <div>The stored value is: {this.state.storageValue}</div>
+        <div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>
       </div>
     );
   }
 }
 
 export default App;
+
+
+//extra content to put:
+// Please note that you files will NOT be uploaded and your data remain safe locally.
+//
+// All computation are done locally within your HTML browser.
+// File Hashes can be used to verify the data integrity/identify e.g. game patches, virus identification
+// It is possible for hash collision to happen (two different files have the same hashes), but very unlikely.
+// If the downloaded files have different hashes than given, please do not open!
+// Maximum supported local file size = 3G (1024 * 3M).

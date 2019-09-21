@@ -30,21 +30,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":\"Authenticity\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":{\"keccak256\":\"0x6f5bd326e797f62d9ab3665fe7600d5324f0c50309574a70dfb43ab34094de3f\",\"urls\":[\"bzzr://d2d996a4cada62499c803e06ee443cb096961d759da26974e13605ed3d111d33\"]}},\"version\":1}",
-  "bytecode": "0x6080604052606f60005534801561001557600080fd5b5060bd806100246000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820286d7a545c91387f74700e8fed161ac8e856e80181e7d4b84dc34fe135a5ec320029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820286d7a545c91387f74700e8fed161ac8e856e80181e7d4b84dc34fe135a5ec320029",
-  "sourceMap": "25:181:0:-;;;69:3;51:21;;25:181;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:181:0;;;;;;;",
-  "deployedSourceMap": "25:181:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:181:0;;;;;;;;;;;;;;;;;;;;;;;;77:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;77:53:0;;;;;;;;;;;;;;;;;:::i;:::-;;134:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;77:53;124:1;111:10;:14;;;;77:53;:::o;134:70::-;170:4;189:10;;182:17;;134:70;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract Authenticity {\n  uint storedData = 111;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":\"Authenticity\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":{\"keccak256\":\"0x66410602a12fa2044a795a1ad66def370a5fe9790a49eac558f0ecba66b90a5b\",\"urls\":[\"bzzr://347e980e17cb44ca9399db49c448279f5625416e4354f57b75a36e981a306182\"]}},\"version\":1}",
+  "bytecode": "0x6080604052606f60005534801561001557600080fd5b5060c1806100246000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b600060016000540190509056fea165627a7a7230582058230427996fede410af026ed1e365f2ddd10ce96ee9a0ea6885618058d3dc3e0029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b600060016000540190509056fea165627a7a7230582058230427996fede410af026ed1e365f2ddd10ce96ee9a0ea6885618058d3dc3e0029",
+  "sourceMap": "25:185:0:-;;;69:3;51:21;;25:185;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:185:0;;;;;;;",
+  "deployedSourceMap": "25:185:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:185:0;;;;;;;;;;;;;;;;;;;;;;;;77:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;77:53:0;;;;;;;;;;;;;;;;;:::i;:::-;;134:74;;;:::i;:::-;;;;;;;;;;;;;;;;;;;77:53;124:1;111:10;:14;;;;77:53;:::o;134:74::-;170:4;202:1;189:10;;:14;182:21;;134:74;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract Authenticity {\n  uint storedData = 111;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData + 1;\n  }\n}\n",
   "sourcePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
   "ast": {
     "absolutePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
     "exportedSymbols": {
       "Authenticity": [
-        23
+        25
       ]
     },
-    "id": 24,
+    "id": 26,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -64,9 +64,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 23,
+        "id": 25,
         "linearizedBaseContracts": [
-          23
+          25
         ],
         "name": "Authenticity",
         "nodeType": "ContractDefinition",
@@ -76,7 +76,7 @@
             "id": 4,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 23,
+            "scope": 25,
             "src": "51:21:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -214,7 +214,7 @@
               "parameters": [],
               "src": "105:0:0"
             },
-            "scope": 23,
+            "scope": 25,
             "src": "77:53:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -222,33 +222,70 @@
           },
           {
             "body": {
-              "id": 21,
+              "id": 23,
               "nodeType": "Block",
-              "src": "176:28:0",
+              "src": "176:32:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 19,
-                    "name": "storedData",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 4,
-                    "src": "189:10:0",
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 21,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 19,
+                      "name": "storedData",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "189:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "+",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 20,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "202:1:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "189:14:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "functionReturnParameters": 18,
-                  "id": 20,
+                  "id": 22,
                   "nodeType": "Return",
-                  "src": "182:17:0"
+                  "src": "182:21:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 22,
+            "id": 24,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -269,7 +306,7 @@
                   "id": 17,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 22,
+                  "scope": 24,
                   "src": "170:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -293,27 +330,27 @@
               ],
               "src": "169:6:0"
             },
-            "scope": 23,
-            "src": "134:70:0",
+            "scope": 25,
+            "src": "134:74:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 24,
-        "src": "25:181:0"
+        "scope": 26,
+        "src": "25:185:0"
       }
     ],
-    "src": "0:207:0"
+    "src": "0:211:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
     "exportedSymbols": {
       "Authenticity": [
-        23
+        25
       ]
     },
-    "id": 24,
+    "id": 26,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -333,9 +370,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 23,
+        "id": 25,
         "linearizedBaseContracts": [
-          23
+          25
         ],
         "name": "Authenticity",
         "nodeType": "ContractDefinition",
@@ -345,7 +382,7 @@
             "id": 4,
             "name": "storedData",
             "nodeType": "VariableDeclaration",
-            "scope": 23,
+            "scope": 25,
             "src": "51:21:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -483,7 +520,7 @@
               "parameters": [],
               "src": "105:0:0"
             },
-            "scope": 23,
+            "scope": 25,
             "src": "77:53:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -491,33 +528,70 @@
           },
           {
             "body": {
-              "id": 21,
+              "id": 23,
               "nodeType": "Block",
-              "src": "176:28:0",
+              "src": "176:32:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 19,
-                    "name": "storedData",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 4,
-                    "src": "189:10:0",
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 21,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 19,
+                      "name": "storedData",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "189:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "+",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 20,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "202:1:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "189:14:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "functionReturnParameters": 18,
-                  "id": 20,
+                  "id": 22,
                   "nodeType": "Return",
-                  "src": "182:17:0"
+                  "src": "182:21:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 22,
+            "id": 24,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -538,7 +612,7 @@
                   "id": 17,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 22,
+                  "scope": 24,
                   "src": "170:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -562,18 +636,18 @@
               ],
               "src": "169:6:0"
             },
-            "scope": 23,
-            "src": "134:70:0",
+            "scope": 25,
+            "src": "134:74:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 24,
-        "src": "25:181:0"
+        "scope": 26,
+        "src": "25:185:0"
       }
     ],
-    "src": "0:207:0"
+    "src": "0:211:0"
   },
   "compiler": {
     "name": "solc",
@@ -583,12 +657,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xeA970730799688B6F63ae0e9F16BdfaFa6BeD3EA",
-      "transactionHash": "0x25eef589c6808a29e743502a57121d239a0658e240860089c2504308cb12481b"
+      "address": "0x70509CbC4f412BD8c30e971707FF0c1a97Dae16d",
+      "transactionHash": "0xbfd13984ce9545cf0fa901bd2b48451b07bc88e044cb99da6c326feea9e7a11f"
     }
   },
   "schemaVersion": "3.0.14",
-  "updatedAt": "2019-09-09T03:45:07.019Z",
+  "updatedAt": "2019-09-21T04:45:08.847Z",
   "devdoc": {
     "methods": {}
   },

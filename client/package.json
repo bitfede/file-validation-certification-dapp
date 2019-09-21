@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "fsevents": "^2.0.7",
     "node-gyp": "^5.0.3",
     "react": "^16.9.0",
