@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AuthenticityContract from "./contracts/Authenticity.json";
 import getWeb3 from "./utils/getWeb3";
+import CryptoJS from "crypto-js";
+
 
 import "./App.css";
 
@@ -10,17 +12,18 @@ class App extends Component {
     storageValue: 0,
     web3: null,
     accounts: null,
-    contract: null
+    contract: null,
+    fileHash: null
   };
 
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
-
-      // Use web3 to get the user's accounts.
+      //
+      // // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-      // Get the contract instance.
+      // // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = AuthenticityContract.networks[networkId];
       const instance = new web3.eth.Contract(
@@ -41,17 +44,17 @@ class App extends Component {
   };
 
   runExample = async () => {
-    const { accounts, contract } = this.state;
-    // console.log(this.state, "##################")
-    // Stores a given value, 5 by default.
-    await contract.methods.set(124).send({ from: accounts[0] });
-
-    // // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-    console.log(response, "runexample method-----")
+    // const { accounts, contract } = this.state;
+    // // console.log(this.state, "##################")
+    // // Stores a given value, 5 by default.
+    // await contract.methods.set(124).send({ from: accounts[0] });
     //
-    // // Update state with the result.
-    this.setState({ storageValue: response });
+    // // // Get the value from the contract to prove it worked.
+    // const response = await contract.methods.get().call();
+    // console.log(response, "runexample method-----")
+    // //
+    // // // Update state with the result.
+    // this.setState({ storageValue: response });
   };
 
   refreshValue = async () => {
@@ -65,10 +68,27 @@ class App extends Component {
     this.setState({storageValue: response})
   }
 
+  arrayBufferToWordArray = (ab) => {
+  var i8a = new Uint8Array(ab);
+  var a = [];
+  for (var i = 0; i < i8a.length; i += 4) {
+    a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+  }
+  return CryptoJS.lib.WordArray.create(a, i8a.length);
+  }
+
   uploadFile = async (e) => {
     console.log("*******")
-    const file = e.target.files[0]
-    console.log(file)
+    const uplFile = e.target.files[0]
+    console.log(uplFile)
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      var arrayBuffer = e.target.result;
+
+        var hashValue = CryptoJS.SHA256(this.arrayBufferToWordArray(arrayBuffer)).toString(CryptoJS.enc.Hex);
+        this.setState({fileHash: hashValue}, () => {console.log("STATE >>", this.state)})
+    }
+    reader.readAsArrayBuffer(uplFile);
   }
 
   render() {
@@ -78,11 +98,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Certify the Existence of your file</h1>
-        <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="#">Click here to learn more</a>.</p>
+        <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
         <h2>Upload your file</h2>
-        <div id="fileUplCont">
+        <div id="fileUplCont" >
           <input type="file" id="fileCert" onChange={(e) => this.uploadFile(e)} />
         </div>
+        <hr />
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
