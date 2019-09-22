@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+pragma experimental ABIEncoderV2;
 
 contract Authenticity {
 
@@ -7,13 +8,19 @@ contract Authenticity {
     string fileHash;
   }
 
-  mapping (address => Interaction[])
+  mapping (address => FileCertificate[]) usersMap;
 
-  function set(uint x) public {
-    storedData = x;
+  function certifyFile(uint fileSize, string memory fileHash) public payable {
+    FileCertificate memory newCertificate = FileCertificate(fileSize, fileHash);
+    usersMap[msg.sender].push(newCertificate);
   }
 
-  function get() public view returns (uint) {
-    return storedData + 1;
+  function getHistory() public view returns(FileCertificate[] memory) {
+    uint historyLen = usersMap[msg.sender].length;
+    FileCertificate[] memory retValue = new FileCertificate[](historyLen);
+    for (uint i = 0; i < historyLen; i++) {
+        retValue[i] = usersMap[msg.sender][i];
+    }
+    return retValue;
   }
 }
