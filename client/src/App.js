@@ -9,7 +9,7 @@ import "./App.css";
 class App extends Component {
 
   state = {
-    storageValue: 0,
+    accountHistory: null,
     web3: null,
     accounts: null,
     contract: null,
@@ -34,7 +34,7 @@ class App extends Component {
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState({ web3, accounts, contract: instance }, this.getAcctHistory);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -44,28 +44,31 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    // const { accounts, contract } = this.state;
-    // // console.log(this.state, "##################")
-    // // Stores a given value, 5 by default.
-    // await contract.methods.set(124).send({ from: accounts[0] });
+  certifyFile = async () => {
+    const { accounts, contract } = this.state;
+    const dataToWrite = {
+      fileSize: this.state.fileSize,
+      fileHash: this.state.fileHash
+    }
+    // Stores the file info into the blockchain
+    await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash).send({ from: accounts[0] });
+
+    // // Get the value from the contract to prove it worked.
+    const response = await contract.methods.getHistory().call({ from: accounts[0] });
+    console.log("---------", response, "FILE CERTIFIED! updaed value-----")
     //
-    // // // Get the value from the contract to prove it worked.
-    // const response = await contract.methods.get().call();
-    // console.log(response, "runexample method-----")
-    // //
-    // // // Update state with the result.
-    // this.setState({ storageValue: response });
+    // // Update state with the result.
+    this.setState({ storageValue: response });
   };
 
-  refreshValue = async () => {
+  getAcctHistory = async () => {
     const { accounts, contract } = this.state;
     //call the get method of the contract
-    const response = await contract.methods.get().call();
+    const response = await contract.methods.getHistory().call({ from: accounts[0] });
     //debug
-    console.log(response, "refreshValue method-----")
+    console.log(">>>>>>>>>", response, "getAcctHistory method-----")
     //update the state with new value
-    this.setState({storageValue: response})
+    this.setState({accountHistory: response})
   }
 
   arrayBufferToWordArray = (ab) => {
@@ -92,7 +95,7 @@ class App extends Component {
     reader.readAsArrayBuffer(uplFile);
   }
 
-  outputHashAndCTA = () => {
+  outputFileHash = () => {
     if (this.state.fileHash === null) {
       return (<p>No File Uploaded</p>)
     }
@@ -103,8 +106,21 @@ class App extends Component {
 
   }
 
-  certifyFile = async () => {
-    console.log("WRITE TX TO ETH CONTRACT")
+  outputHistory = () => {
+    if (this.state.accountHistory === null) {
+      return (<p>Loading past interactions...</p>)
+    }
+    let counter = 0;
+    const interactions = this.state.accountHistory.map( (interaction) => {
+      console.log("--> ", interaction)
+      return <p>File Size: </p>
+    })
+
+    return (
+      <div>
+        {interactions}
+      </div>
+    )
   }
 
   render() {
@@ -120,7 +136,7 @@ class App extends Component {
           <input type="file" id="fileCert" onChange={(e) => this.uploadFile(e)} />
         </div>
         <div>
-          {this.outputHashAndCTA()}
+          {this.outputFileHash()}
         </div>
         <div>
           <p>Text descr:</p>
@@ -129,6 +145,7 @@ class App extends Component {
         <hr />
         <h2>Previous Interactions</h2>
         <p>work in progress..</p>
+        {this.outputHistory()}
         <hr />
         <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
         {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}

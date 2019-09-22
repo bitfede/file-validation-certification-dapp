@@ -5,24 +5,38 @@
       "constant": false,
       "inputs": [
         {
-          "name": "x",
+          "name": "fileSize",
           "type": "uint256"
+        },
+        {
+          "name": "fileHash",
+          "type": "string"
         }
       ],
-      "name": "set",
+      "name": "certifyFile",
       "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "get",
+      "name": "getHistory",
       "outputs": [
         {
+          "components": [
+            {
+              "name": "fileSize",
+              "type": "uint256"
+            },
+            {
+              "name": "fileHash",
+              "type": "string"
+            }
+          ],
           "name": "",
-          "type": "uint256"
+          "type": "tuple[]"
         }
       ],
       "payable": false,
@@ -30,21 +44,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":\"Authenticity\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":{\"keccak256\":\"0x66410602a12fa2044a795a1ad66def370a5fe9790a49eac558f0ecba66b90a5b\",\"urls\":[\"bzzr://347e980e17cb44ca9399db49c448279f5625416e4354f57b75a36e981a306182\"]}},\"version\":1}",
-  "bytecode": "0x6080604052606f60005534801561001557600080fd5b5060c1806100246000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b600060016000540190509056fea165627a7a7230582058230427996fede410af026ed1e365f2ddd10ce96ee9a0ea6885618058d3dc3e0029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b600060016000540190509056fea165627a7a7230582058230427996fede410af026ed1e365f2ddd10ce96ee9a0ea6885618058d3dc3e0029",
-  "sourceMap": "25:185:0:-;;;69:3;51:21;;25:185;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:185:0;;;;;;;",
-  "deployedSourceMap": "25:185:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:185:0;;;;;;;;;;;;;;;;;;;;;;;;77:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;77:53:0;;;;;;;;;;;;;;;;;:::i;:::-;;134:74;;;:::i;:::-;;;;;;;;;;;;;;;;;;;77:53;124:1;111:10;:14;;;;77:53;:::o;134:74::-;170:4;202:1;189:10;;:14;182:21;;134:74;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract Authenticity {\n  uint storedData = 111;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData + 1;\n  }\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"fileSize\",\"type\":\"uint256\"},{\"name\":\"fileHash\",\"type\":\"string\"}],\"name\":\"certifyFile\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getHistory\",\"outputs\":[{\"components\":[{\"name\":\"fileSize\",\"type\":\"uint256\"},{\"name\":\"fileHash\",\"type\":\"string\"}],\"name\":\"\",\"type\":\"tuple[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":\"Authenticity\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol\":{\"keccak256\":\"0x7ee3b0d73553d963d19392bb3311df6102837146397bd0658995aa2ff098eafb\",\"urls\":[\"bzzr://6faba93b0789b2e4569e37f4a35aad544a630e083fc750c017e2f15397a2a29c\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061071c806100206000396000f3fe6080604052600436106100295760003560e01c806373e1bb321461002e578063aa15efc81461004a575b600080fd5b6100486004803603610043919081019061043f565b610075565b005b34801561005657600080fd5b5061005f61012d565b60405161006c91906105a1565b60405180910390f35b61007d6102fd565b60405180604001604052808481526020018381525090506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190806001815401808255809150509060018203906000526020600020906002020160009091929091909150600082015181600001556020820151816001019080519060200190610124929190610317565b50505050505050565b606060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208054905090506060816040519080825280602002602001820160405280156101b157816020015b61019e610397565b8152602001906001900390816101965790505b50905060008090505b828110156102f4576000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020818154811061020b57fe5b906000526020600020906002020160405180604001604052908160008201548152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102c75780601f1061029c576101008083540402835291602001916102c7565b820191906000526020600020905b8154815290600101906020018083116102aa57829003601f168201915b5050505050815250508282815181106102dc57fe5b602002602001018190525080806001019150506101ba565b50809250505090565b604051806040016040528060008152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061035857805160ff1916838001178555610386565b82800160010185558215610386579182015b8281111561038557825182559160200191906001019061036a565b5b50905061039391906103b1565b5090565b604051806040016040528060008152602001606081525090565b6103d391905b808211156103cf5760008160009055506001016103b7565b5090565b90565b600082601f8301126103e757600080fd5b81356103fa6103f5826105f0565b6105c3565b9150808252602083016020830185838301111561041657600080fd5b610421838284610678565b50505092915050565b600081359050610439816106cb565b92915050565b6000806040838503121561045257600080fd5b60006104608582860161042a565b925050602083013567ffffffffffffffff81111561047d57600080fd5b610489858286016103d6565b9150509250929050565b600061049f8383610555565b905092915050565b60006104b282610629565b6104bc818561064c565b9350836020820285016104ce8561061c565b8060005b8581101561050a57848403895281516104eb8582610493565b94506104f68361063f565b925060208a019950506001810190506104d2565b50829750879550505050505092915050565b600061052782610634565b610531818561065d565b9350610541818560208601610687565b61054a816106ba565b840191505092915050565b600060408301600083015161056d6000860182610592565b5060208301518482036020860152610585828261051c565b9150508091505092915050565b61059b8161066e565b82525050565b600060208201905081810360008301526105bb81846104a7565b905092915050565b6000604051905081810181811067ffffffffffffffff821117156105e657600080fd5b8060405250919050565b600067ffffffffffffffff82111561060757600080fd5b601f19601f8301169050602081019050919050565b6000602082019050919050565b600081519050919050565b600081519050919050565b6000602082019050919050565b600082825260208201905092915050565b600082825260208201905092915050565b6000819050919050565b82818337600083830152505050565b60005b838110156106a557808201518184015260208101905061068a565b838111156106b4576000848401525b50505050565b6000601f19601f8301169050919050565b6106d48161066e565b81146106df57600080fd5b5056fea265627a7a7230582064b6c0ea6d8b198ba7a409afd0c2be2f9346def6a17a783a1bd6932f3a105ac66c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x6080604052600436106100295760003560e01c806373e1bb321461002e578063aa15efc81461004a575b600080fd5b6100486004803603610043919081019061043f565b610075565b005b34801561005657600080fd5b5061005f61012d565b60405161006c91906105a1565b60405180910390f35b61007d6102fd565b60405180604001604052808481526020018381525090506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190806001815401808255809150509060018203906000526020600020906002020160009091929091909150600082015181600001556020820151816001019080519060200190610124929190610317565b50505050505050565b606060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208054905090506060816040519080825280602002602001820160405280156101b157816020015b61019e610397565b8152602001906001900390816101965790505b50905060008090505b828110156102f4576000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020818154811061020b57fe5b906000526020600020906002020160405180604001604052908160008201548152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102c75780601f1061029c576101008083540402835291602001916102c7565b820191906000526020600020905b8154815290600101906020018083116102aa57829003601f168201915b5050505050815250508282815181106102dc57fe5b602002602001018190525080806001019150506101ba565b50809250505090565b604051806040016040528060008152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061035857805160ff1916838001178555610386565b82800160010185558215610386579182015b8281111561038557825182559160200191906001019061036a565b5b50905061039391906103b1565b5090565b604051806040016040528060008152602001606081525090565b6103d391905b808211156103cf5760008160009055506001016103b7565b5090565b90565b600082601f8301126103e757600080fd5b81356103fa6103f5826105f0565b6105c3565b9150808252602083016020830185838301111561041657600080fd5b610421838284610678565b50505092915050565b600081359050610439816106cb565b92915050565b6000806040838503121561045257600080fd5b60006104608582860161042a565b925050602083013567ffffffffffffffff81111561047d57600080fd5b610489858286016103d6565b9150509250929050565b600061049f8383610555565b905092915050565b60006104b282610629565b6104bc818561064c565b9350836020820285016104ce8561061c565b8060005b8581101561050a57848403895281516104eb8582610493565b94506104f68361063f565b925060208a019950506001810190506104d2565b50829750879550505050505092915050565b600061052782610634565b610531818561065d565b9350610541818560208601610687565b61054a816106ba565b840191505092915050565b600060408301600083015161056d6000860182610592565b5060208301518482036020860152610585828261051c565b9150508091505092915050565b61059b8161066e565b82525050565b600060208201905081810360008301526105bb81846104a7565b905092915050565b6000604051905081810181811067ffffffffffffffff821117156105e657600080fd5b8060405250919050565b600067ffffffffffffffff82111561060757600080fd5b601f19601f8301169050602081019050919050565b6000602082019050919050565b600081519050919050565b600081519050919050565b6000602082019050919050565b600082825260208201905092915050565b600082825260208201905092915050565b6000819050919050565b82818337600083830152505050565b60005b838110156106a557808201518184015260208101905061068a565b838111156106b4576000848401525b50505050565b6000601f19601f8301169050919050565b6106d48161066e565b81146106df57600080fd5b5056fea265627a7a7230582064b6c0ea6d8b198ba7a409afd0c2be2f9346def6a17a783a1bd6932f3a105ac66c6578706572696d656e74616cf50037",
+  "sourceMap": "59:682:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;59:682:0;;;;;;;",
+  "deployedSourceMap": "59:682:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;210:208;;;;;;;;;;;;;;;;:::i;:::-;;422:317;;8:9:-1;5:2;;;30:1;27;20:12;5:2;422:317:0;;;:::i;:::-;;;;;;;;;;;;;;;;210:208;291:37;;:::i;:::-;331:35;;;;;;;;347:8;331:35;;;;357:8;331:35;;;291:75;;372:8;:20;381:10;372:20;;;;;;;;;;;;;;;398:14;372:41;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;372:41:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;210:208;;;:::o;422:317::-;464:24;496:15;514:8;:20;523:10;514:20;;;;;;;;;;;;;;;:27;;;;496:45;;547:33;605:10;583:33;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;547:69;;627:6;636:1;627:10;;622:92;643:10;639:1;:14;622:92;;;684:8;:20;693:10;684:20;;;;;;;;;;;;;;;705:1;684:23;;;;;;;;;;;;;;;;;;670:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:8;679:1;670:11;;;;;;;;;;;;;:37;;;;655:3;;;;;;;622:92;;;;726:8;719:15;;;;422:317;:::o;59:682::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;6:442:-1:-;;108:3;101:4;93:6;89:17;85:27;75:2;;126:1;123;116:12;75:2;163:6;150:20;185:65;200:49;242:6;200:49;;;185:65;;;176:74;;270:6;263:5;256:21;306:4;298:6;294:17;339:4;332:5;328:16;374:3;365:6;360:3;356:16;353:25;350:2;;;391:1;388;381:12;350:2;401:41;435:6;430:3;425;401:41;;;68:380;;;;;;;;456:130;;536:6;523:20;514:29;;548:33;575:5;548:33;;;508:78;;;;;593:472;;;724:2;712:9;703:7;699:23;695:32;692:2;;;740:1;737;730:12;692:2;775:1;792:53;837:7;828:6;817:9;813:22;792:53;;;782:63;;754:97;910:2;899:9;895:18;882:32;934:18;926:6;923:30;920:2;;;966:1;963;956:12;920:2;986:63;1041:7;1032:6;1021:9;1017:22;986:63;;;976:73;;861:194;686:379;;;;;;1073:261;;1226:102;1324:3;1316:6;1226:102;;;1212:116;;1205:129;;;;;1429:1056;;1626:80;1700:5;1626:80;;;1719:112;1824:6;1819:3;1719:112;;;1712:119;;1854:3;1896:4;1888:6;1884:17;1879:3;1875:27;1923:82;1999:5;1923:82;;;2025:7;2053:1;2038:408;2063:6;2060:1;2057:13;2038:408;;;2125:9;2119:4;2115:20;2110:3;2103:33;2170:6;2164:13;2192:116;2303:4;2288:13;2192:116;;;2184:124;;2325:86;2404:6;2325:86;;;2315:96;;2434:4;2429:3;2425:14;2418:21;;2095:351;2085:1;2082;2078:9;2073:14;;2038:408;;;2042:14;2459:4;2452:11;;2476:3;2469:10;;1605:880;;;;;;;;;;2493:319;;2591:35;2620:5;2591:35;;;2638:61;2692:6;2687:3;2638:61;;;2631:68;;2704:52;2749:6;2744:3;2737:4;2730:5;2726:16;2704:52;;;2777:29;2799:6;2777:29;;;2772:3;2768:39;2761:46;;2571:241;;;;;;2900:569;;3047:4;3042:3;3038:14;3134:3;3127:5;3123:15;3117:22;3145:62;3202:3;3197;3193:13;3179:12;3145:62;;;3067:146;3290:4;3283:5;3279:16;3273:23;3342:3;3336:4;3332:14;3325:4;3320:3;3316:14;3309:38;3362:69;3426:4;3412:12;3362:69;;;3354:77;;3223:220;3460:4;3453:11;;3020:449;;;;;;3476:103;3549:24;3567:5;3549:24;;;3544:3;3537:37;3531:48;;;3586:465;;3806:2;3795:9;3791:18;3783:26;;3856:9;3850:4;3846:20;3842:1;3831:9;3827:17;3820:47;3881:160;4036:4;4027:6;3881:160;;;3873:168;;3777:274;;;;;4058:256;;4120:2;4114:9;4104:19;;4158:4;4150:6;4146:17;4257:6;4245:10;4242:22;4221:18;4209:10;4206:34;4203:62;4200:2;;;4278:1;4275;4268:12;4200:2;4298:10;4294:2;4287:22;4098:216;;;;;4321:259;;4465:18;4457:6;4454:30;4451:2;;;4497:1;4494;4487:12;4451:2;4541:4;4537:9;4530:4;4522:6;4518:17;4514:33;4506:41;;4570:4;4564;4560:15;4552:23;;4388:192;;;;4590:149;;4726:4;4718:6;4714:17;4703:28;;4694:45;;;;4749:133;;4871:5;4865:12;4855:22;;4849:33;;;;4889:88;;4966:5;4960:12;4950:22;;4944:33;;;;4986:150;;5124:4;5116:6;5112:17;5101:28;;5093:43;;;;5146:204;;5302:6;5297:3;5290:19;5339:4;5334:3;5330:14;5315:29;;5283:67;;;;;5359:153;;5464:6;5459:3;5452:19;5501:4;5496:3;5492:14;5477:29;;5445:67;;;;;5520:72;;5582:5;5571:16;;5565:27;;;;5600:145;5681:6;5676:3;5671;5658:30;5737:1;5728:6;5723:3;5719:16;5712:27;5651:94;;;;5754:268;5819:1;5826:101;5840:6;5837:1;5834:13;5826:101;;;5916:1;5911:3;5907:11;5901:18;5897:1;5892:3;5888:11;5881:39;5862:2;5859:1;5855:10;5850:15;;5826:101;;;5942:6;5939:1;5936:13;5933:2;;;6007:1;5998:6;5993:3;5989:16;5982:27;5933:2;5803:219;;;;;6030:97;;6118:2;6114:7;6109:2;6102:5;6098:14;6094:28;6084:38;;6078:49;;;;6135:117;6204:24;6222:5;6204:24;;;6197:5;6194:35;6184:2;;6243:1;6240;6233:12;6184:2;6178:74;",
+  "source": "pragma solidity ^0.5.0;\npragma experimental ABIEncoderV2;\n\ncontract Authenticity {\n\n  struct FileCertificate {\n    uint fileSize;\n    string fileHash;\n  }\n\n  mapping (address => FileCertificate[]) usersMap;\n\n  function certifyFile(uint fileSize, string memory fileHash) public payable {\n    FileCertificate memory newCertificate = FileCertificate(fileSize, fileHash);\n    usersMap[msg.sender].push(newCertificate);\n  }\n\n  function getHistory() public view returns(FileCertificate[] memory) {\n    uint historyLen = usersMap[msg.sender].length;\n    FileCertificate[] memory retValue = new FileCertificate[](historyLen);\n    for (uint i = 0; i < historyLen; i++) {\n        retValue[i] = usersMap[msg.sender][i];\n    }\n    return retValue;\n  }\n}\n",
   "sourcePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
   "ast": {
     "absolutePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
     "exportedSymbols": {
       "Authenticity": [
-        25
+        86
       ]
     },
-    "id": 26,
+    "id": 87,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -59,133 +73,390 @@
         "src": "0:23:0"
       },
       {
+        "id": 2,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "24:33:0"
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 25,
+        "id": 86,
         "linearizedBaseContracts": [
-          25
+          86
         ],
         "name": "Authenticity",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "canonicalName": "Authenticity.FileCertificate",
+            "id": 7,
+            "members": [
+              {
+                "constant": false,
+                "id": 4,
+                "name": "fileSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "115:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "115:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6,
+                "name": "fileHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "134:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 5,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "134:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "FileCertificate",
+            "nodeType": "StructDefinition",
+            "scope": 86,
+            "src": "86:68:0",
+            "visibility": "public"
+          },
+          {
             "constant": false,
-            "id": 4,
-            "name": "storedData",
+            "id": 12,
+            "name": "usersMap",
             "nodeType": "VariableDeclaration",
-            "scope": 25,
-            "src": "51:21:0",
+            "scope": 86,
+            "src": "158:47:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+              "typeString": "mapping(address => struct Authenticity.FileCertificate[])"
             },
             "typeName": {
-              "id": 2,
-              "name": "uint",
-              "nodeType": "ElementaryTypeName",
-              "src": "51:4:0",
+              "id": 11,
+              "keyType": {
+                "id": 8,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "167:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "158:38:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                "typeString": "mapping(address => struct Authenticity.FileCertificate[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 9,
+                  "name": "FileCertificate",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 7,
+                  "src": "178:15:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                    "typeString": "struct Authenticity.FileCertificate"
+                  }
+                },
+                "id": 10,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "178:17:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                  "typeString": "struct Authenticity.FileCertificate[]"
+                }
               }
             },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "313131",
-              "id": 3,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "69:3:0",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_111_by_1",
-                "typeString": "int_const 111"
-              },
-              "value": "111"
-            },
+            "value": null,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 13,
+              "id": 34,
               "nodeType": "Block",
-              "src": "105:25:0",
+              "src": "285:133:0",
               "statements": [
                 {
-                  "expression": {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "newCertificate",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 34,
+                      "src": "291:37:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                        "typeString": "struct Authenticity.FileCertificate"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 19,
+                        "name": "FileCertificate",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7,
+                        "src": "291:15:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 25,
+                  "initialValue": {
                     "argumentTypes": null,
-                    "id": 11,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 22,
+                        "name": "fileSize",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "347:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 23,
+                        "name": "fileHash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 16,
+                        "src": "357:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 21,
+                      "name": "FileCertificate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7,
+                      "src": "331:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_FileCertificate_$7_storage_ptr_$",
+                        "typeString": "type(struct Authenticity.FileCertificate storage pointer)"
+                      }
+                    },
+                    "id": 24,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
+                    "kind": "structConstructorCall",
                     "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 9,
-                      "name": "storedData",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 4,
-                      "src": "111:10:0",
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "331:35:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                      "typeString": "struct Authenticity.FileCertificate memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "291:75:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 31,
+                        "name": "newCertificate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "398:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                          "typeString": "struct Authenticity.FileCertificate memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                          "typeString": "struct Authenticity.FileCertificate memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 26,
+                          "name": "usersMap",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12,
+                          "src": "372:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                            "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                          }
+                        },
+                        "id": 29,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 27,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 158,
+                            "src": "381:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 28,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "381:10:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "372:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                          "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                        }
+                      },
+                      "id": 30,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "372:25:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_FileCertificate_$7_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct Authenticity.FileCertificate storage ref) returns (uint256)"
                       }
                     },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 10,
-                      "name": "x",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 6,
-                      "src": "124:1:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "111:14:0",
+                    "id": 32,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "372:41:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 12,
+                  "id": 33,
                   "nodeType": "ExpressionStatement",
-                  "src": "111:14:0"
+                  "src": "372:41:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 14,
+            "id": 35,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "set",
+            "name": "certifyFile",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7,
+              "id": 17,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6,
-                  "name": "x",
+                  "id": 14,
+                  "name": "fileSize",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14,
-                  "src": "90:6:0",
+                  "scope": 35,
+                  "src": "231:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -193,10 +464,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5,
+                    "id": 13,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "90:4:0",
+                    "src": "231:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -204,153 +475,670 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "fileHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35,
+                  "src": "246:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "89:8:0"
+              "src": "230:39:0"
             },
             "returnParameters": {
-              "id": 8,
+              "id": 18,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "105:0:0"
+              "src": "285:0:0"
             },
-            "scope": 25,
-            "src": "77:53:0",
-            "stateMutability": "nonpayable",
+            "scope": 86,
+            "src": "210:208:0",
+            "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 23,
+              "id": 84,
               "nodeType": "Block",
-              "src": "176:32:0",
+              "src": "490:249:0",
               "statements": [
                 {
-                  "expression": {
+                  "assignments": [
+                    42
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 42,
+                      "name": "historyLen",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 84,
+                      "src": "496:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 41,
+                        "name": "uint",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "496:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 48,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 43,
+                        "name": "usersMap",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "514:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                          "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 46,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 44,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 158,
+                          "src": "523:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 45,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "523:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "514:20:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                        "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                      }
+                    },
+                    "id": 47,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "514:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "496:45:0"
+                },
+                {
+                  "assignments": [
+                    52
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 52,
+                      "name": "retValue",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 84,
+                      "src": "547:33:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                        "typeString": "struct Authenticity.FileCertificate[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "contractScope": null,
+                          "id": 50,
+                          "name": "FileCertificate",
+                          "nodeType": "UserDefinedTypeName",
+                          "referencedDeclaration": 7,
+                          "src": "547:15:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                            "typeString": "struct Authenticity.FileCertificate"
+                          }
+                        },
+                        "id": 51,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "547:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 58,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 56,
+                        "name": "historyLen",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "605:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 55,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "583:21:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_$",
+                        "typeString": "function (uint256) pure returns (struct Authenticity.FileCertificate memory[] memory)"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "contractScope": null,
+                          "id": 53,
+                          "name": "FileCertificate",
+                          "nodeType": "UserDefinedTypeName",
+                          "referencedDeclaration": 7,
+                          "src": "587:15:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                            "typeString": "struct Authenticity.FileCertificate"
+                          }
+                        },
+                        "id": 54,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "587:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate[]"
+                        }
+                      }
+                    },
+                    "id": 57,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "583:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory",
+                      "typeString": "struct Authenticity.FileCertificate memory[] memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "547:69:0"
+                },
+                {
+                  "body": {
+                    "id": 80,
+                    "nodeType": "Block",
+                    "src": "660:54:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 78,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 69,
+                              "name": "retValue",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 52,
+                              "src": "670:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                                "typeString": "struct Authenticity.FileCertificate memory[] memory"
+                              }
+                            },
+                            "id": 71,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 70,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 60,
+                              "src": "679:1:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "670:11:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                              "typeString": "struct Authenticity.FileCertificate memory"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 72,
+                                "name": "usersMap",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 12,
+                                "src": "684:8:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                                  "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                                }
+                              },
+                              "id": 75,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 73,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 158,
+                                  "src": "693:3:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 74,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "693:10:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "684:20:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                                "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                              }
+                            },
+                            "id": 77,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 76,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 60,
+                              "src": "705:1:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "684:23:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FileCertificate_$7_storage",
+                              "typeString": "struct Authenticity.FileCertificate storage ref"
+                            }
+                          },
+                          "src": "670:37:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                            "typeString": "struct Authenticity.FileCertificate memory"
+                          }
+                        },
+                        "id": 79,
+                        "nodeType": "ExpressionStatement",
+                        "src": "670:37:0"
+                      }
+                    ]
+                  },
+                  "condition": {
                     "argumentTypes": null,
                     "commonType": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 21,
+                    "id": 65,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 19,
-                      "name": "storedData",
+                      "id": 63,
+                      "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4,
-                      "src": "189:10:0",
+                      "referencedDeclaration": 60,
+                      "src": "639:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
                     "nodeType": "BinaryOperation",
-                    "operator": "+",
+                    "operator": "<",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "hexValue": "31",
-                      "id": 20,
+                      "id": 64,
+                      "name": "historyLen",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 42,
+                      "src": "643:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "639:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 81,
+                  "initializationExpression": {
+                    "assignments": [
+                      60
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 60,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 81,
+                        "src": "627:6:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 59,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "627:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 62,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 61,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "202:1:0",
+                      "src": "636:1:0",
                       "subdenomination": null,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_1_by_1",
-                        "typeString": "int_const 1"
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
                       },
-                      "value": "1"
+                      "value": "0"
                     },
-                    "src": "189:14:0",
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "627:10:0"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 67,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "655:3:0",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 60,
+                        "src": "655:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 68,
+                    "nodeType": "ExpressionStatement",
+                    "src": "655:3:0"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "622:92:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 82,
+                    "name": "retValue",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 52,
+                    "src": "726:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                      "typeString": "struct Authenticity.FileCertificate memory[] memory"
                     }
                   },
-                  "functionReturnParameters": 18,
-                  "id": 22,
+                  "functionReturnParameters": 40,
+                  "id": 83,
                   "nodeType": "Return",
-                  "src": "182:21:0"
+                  "src": "719:15:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 24,
+            "id": 85,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "get",
+            "name": "getHistory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 15,
+              "id": 36,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "146:2:0"
+              "src": "441:2:0"
             },
             "returnParameters": {
-              "id": 18,
+              "id": 40,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 17,
+                  "id": 39,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 24,
-                  "src": "170:4:0",
+                  "scope": 85,
+                  "src": "464:24:0",
                   "stateVariable": false,
-                  "storageLocation": "default",
+                  "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                    "typeString": "struct Authenticity.FileCertificate[]"
                   },
                   "typeName": {
-                    "id": 16,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "170:4:0",
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 37,
+                      "name": "FileCertificate",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 7,
+                      "src": "464:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                        "typeString": "struct Authenticity.FileCertificate"
+                      }
+                    },
+                    "id": 38,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "464:17:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                      "typeString": "struct Authenticity.FileCertificate[]"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "169:6:0"
+              "src": "463:26:0"
             },
-            "scope": 25,
-            "src": "134:74:0",
+            "scope": 86,
+            "src": "422:317:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 26,
-        "src": "25:185:0"
+        "scope": 87,
+        "src": "59:682:0"
       }
     ],
-    "src": "0:211:0"
+    "src": "0:742:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/Fede/Documents/dapps/file-timestamper/contracts/Authenticity.sol",
     "exportedSymbols": {
       "Authenticity": [
-        25
+        86
       ]
     },
-    "id": 26,
+    "id": 87,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -365,133 +1153,390 @@
         "src": "0:23:0"
       },
       {
+        "id": 2,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "24:33:0"
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 25,
+        "id": 86,
         "linearizedBaseContracts": [
-          25
+          86
         ],
         "name": "Authenticity",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "canonicalName": "Authenticity.FileCertificate",
+            "id": 7,
+            "members": [
+              {
+                "constant": false,
+                "id": 4,
+                "name": "fileSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "115:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "115:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6,
+                "name": "fileHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "134:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 5,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "134:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "FileCertificate",
+            "nodeType": "StructDefinition",
+            "scope": 86,
+            "src": "86:68:0",
+            "visibility": "public"
+          },
+          {
             "constant": false,
-            "id": 4,
-            "name": "storedData",
+            "id": 12,
+            "name": "usersMap",
             "nodeType": "VariableDeclaration",
-            "scope": 25,
-            "src": "51:21:0",
+            "scope": 86,
+            "src": "158:47:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+              "typeString": "mapping(address => struct Authenticity.FileCertificate[])"
             },
             "typeName": {
-              "id": 2,
-              "name": "uint",
-              "nodeType": "ElementaryTypeName",
-              "src": "51:4:0",
+              "id": 11,
+              "keyType": {
+                "id": 8,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "167:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "158:38:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                "typeString": "mapping(address => struct Authenticity.FileCertificate[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "contractScope": null,
+                  "id": 9,
+                  "name": "FileCertificate",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 7,
+                  "src": "178:15:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                    "typeString": "struct Authenticity.FileCertificate"
+                  }
+                },
+                "id": 10,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "178:17:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                  "typeString": "struct Authenticity.FileCertificate[]"
+                }
               }
             },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "313131",
-              "id": 3,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "69:3:0",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_111_by_1",
-                "typeString": "int_const 111"
-              },
-              "value": "111"
-            },
+            "value": null,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 13,
+              "id": 34,
               "nodeType": "Block",
-              "src": "105:25:0",
+              "src": "285:133:0",
               "statements": [
                 {
-                  "expression": {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "newCertificate",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 34,
+                      "src": "291:37:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                        "typeString": "struct Authenticity.FileCertificate"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 19,
+                        "name": "FileCertificate",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7,
+                        "src": "291:15:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 25,
+                  "initialValue": {
                     "argumentTypes": null,
-                    "id": 11,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 22,
+                        "name": "fileSize",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "347:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 23,
+                        "name": "fileHash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 16,
+                        "src": "357:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 21,
+                      "name": "FileCertificate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7,
+                      "src": "331:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_FileCertificate_$7_storage_ptr_$",
+                        "typeString": "type(struct Authenticity.FileCertificate storage pointer)"
+                      }
+                    },
+                    "id": 24,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
+                    "kind": "structConstructorCall",
                     "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 9,
-                      "name": "storedData",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 4,
-                      "src": "111:10:0",
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "331:35:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                      "typeString": "struct Authenticity.FileCertificate memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "291:75:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 31,
+                        "name": "newCertificate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "398:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                          "typeString": "struct Authenticity.FileCertificate memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_FileCertificate_$7_memory_ptr",
+                          "typeString": "struct Authenticity.FileCertificate memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 26,
+                          "name": "usersMap",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12,
+                          "src": "372:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                            "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                          }
+                        },
+                        "id": 29,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 27,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 158,
+                            "src": "381:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 28,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "381:10:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "372:20:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                          "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                        }
+                      },
+                      "id": 30,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "372:25:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_FileCertificate_$7_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct Authenticity.FileCertificate storage ref) returns (uint256)"
                       }
                     },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 10,
-                      "name": "x",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 6,
-                      "src": "124:1:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "111:14:0",
+                    "id": 32,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "372:41:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 12,
+                  "id": 33,
                   "nodeType": "ExpressionStatement",
-                  "src": "111:14:0"
+                  "src": "372:41:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 14,
+            "id": 35,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "set",
+            "name": "certifyFile",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7,
+              "id": 17,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6,
-                  "name": "x",
+                  "id": 14,
+                  "name": "fileSize",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14,
-                  "src": "90:6:0",
+                  "scope": 35,
+                  "src": "231:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -499,10 +1544,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5,
+                    "id": 13,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "90:4:0",
+                    "src": "231:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -510,144 +1555,661 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "fileHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35,
+                  "src": "246:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "246:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "89:8:0"
+              "src": "230:39:0"
             },
             "returnParameters": {
-              "id": 8,
+              "id": 18,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "105:0:0"
+              "src": "285:0:0"
             },
-            "scope": 25,
-            "src": "77:53:0",
-            "stateMutability": "nonpayable",
+            "scope": 86,
+            "src": "210:208:0",
+            "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 23,
+              "id": 84,
               "nodeType": "Block",
-              "src": "176:32:0",
+              "src": "490:249:0",
               "statements": [
                 {
-                  "expression": {
+                  "assignments": [
+                    42
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 42,
+                      "name": "historyLen",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 84,
+                      "src": "496:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 41,
+                        "name": "uint",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "496:4:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 48,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 43,
+                        "name": "usersMap",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "514:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                          "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                        }
+                      },
+                      "id": 46,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 44,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 158,
+                          "src": "523:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 45,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "523:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "514:20:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                        "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                      }
+                    },
+                    "id": 47,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "514:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "496:45:0"
+                },
+                {
+                  "assignments": [
+                    52
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 52,
+                      "name": "retValue",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 84,
+                      "src": "547:33:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                        "typeString": "struct Authenticity.FileCertificate[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "contractScope": null,
+                          "id": 50,
+                          "name": "FileCertificate",
+                          "nodeType": "UserDefinedTypeName",
+                          "referencedDeclaration": 7,
+                          "src": "547:15:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                            "typeString": "struct Authenticity.FileCertificate"
+                          }
+                        },
+                        "id": 51,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "547:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 58,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 56,
+                        "name": "historyLen",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "605:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 55,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "583:21:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_$",
+                        "typeString": "function (uint256) pure returns (struct Authenticity.FileCertificate memory[] memory)"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "contractScope": null,
+                          "id": 53,
+                          "name": "FileCertificate",
+                          "nodeType": "UserDefinedTypeName",
+                          "referencedDeclaration": 7,
+                          "src": "587:15:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                            "typeString": "struct Authenticity.FileCertificate"
+                          }
+                        },
+                        "id": 54,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "587:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                          "typeString": "struct Authenticity.FileCertificate[]"
+                        }
+                      }
+                    },
+                    "id": 57,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "583:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory",
+                      "typeString": "struct Authenticity.FileCertificate memory[] memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "547:69:0"
+                },
+                {
+                  "body": {
+                    "id": 80,
+                    "nodeType": "Block",
+                    "src": "660:54:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 78,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 69,
+                              "name": "retValue",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 52,
+                              "src": "670:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                                "typeString": "struct Authenticity.FileCertificate memory[] memory"
+                              }
+                            },
+                            "id": 71,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 70,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 60,
+                              "src": "679:1:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "670:11:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                              "typeString": "struct Authenticity.FileCertificate memory"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 72,
+                                "name": "usersMap",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 12,
+                                "src": "684:8:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_$",
+                                  "typeString": "mapping(address => struct Authenticity.FileCertificate storage ref[] storage ref)"
+                                }
+                              },
+                              "id": 75,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 73,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 158,
+                                  "src": "693:3:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 74,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "693:10:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "684:20:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage",
+                                "typeString": "struct Authenticity.FileCertificate storage ref[] storage ref"
+                              }
+                            },
+                            "id": 77,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 76,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 60,
+                              "src": "705:1:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "684:23:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FileCertificate_$7_storage",
+                              "typeString": "struct Authenticity.FileCertificate storage ref"
+                            }
+                          },
+                          "src": "670:37:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_FileCertificate_$7_memory",
+                            "typeString": "struct Authenticity.FileCertificate memory"
+                          }
+                        },
+                        "id": 79,
+                        "nodeType": "ExpressionStatement",
+                        "src": "670:37:0"
+                      }
+                    ]
+                  },
+                  "condition": {
                     "argumentTypes": null,
                     "commonType": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 21,
+                    "id": 65,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 19,
-                      "name": "storedData",
+                      "id": 63,
+                      "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4,
-                      "src": "189:10:0",
+                      "referencedDeclaration": 60,
+                      "src": "639:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
                     "nodeType": "BinaryOperation",
-                    "operator": "+",
+                    "operator": "<",
                     "rightExpression": {
                       "argumentTypes": null,
-                      "hexValue": "31",
-                      "id": 20,
+                      "id": 64,
+                      "name": "historyLen",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 42,
+                      "src": "643:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "639:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 81,
+                  "initializationExpression": {
+                    "assignments": [
+                      60
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 60,
+                        "name": "i",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 81,
+                        "src": "627:6:0",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 59,
+                          "name": "uint",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "627:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 62,
+                    "initialValue": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 61,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "202:1:0",
+                      "src": "636:1:0",
                       "subdenomination": null,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_1_by_1",
-                        "typeString": "int_const 1"
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
                       },
-                      "value": "1"
+                      "value": "0"
                     },
-                    "src": "189:14:0",
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "627:10:0"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 67,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "655:3:0",
+                      "subExpression": {
+                        "argumentTypes": null,
+                        "id": 66,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 60,
+                        "src": "655:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 68,
+                    "nodeType": "ExpressionStatement",
+                    "src": "655:3:0"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "622:92:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 82,
+                    "name": "retValue",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 52,
+                    "src": "726:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                      "typeString": "struct Authenticity.FileCertificate memory[] memory"
                     }
                   },
-                  "functionReturnParameters": 18,
-                  "id": 22,
+                  "functionReturnParameters": 40,
+                  "id": 83,
                   "nodeType": "Return",
-                  "src": "182:21:0"
+                  "src": "719:15:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 24,
+            "id": 85,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "get",
+            "name": "getHistory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 15,
+              "id": 36,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "146:2:0"
+              "src": "441:2:0"
             },
             "returnParameters": {
-              "id": 18,
+              "id": 40,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 17,
+                  "id": 39,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 24,
-                  "src": "170:4:0",
+                  "scope": 85,
+                  "src": "464:24:0",
                   "stateVariable": false,
-                  "storageLocation": "default",
+                  "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
+                    "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_memory_$dyn_memory_ptr",
+                    "typeString": "struct Authenticity.FileCertificate[]"
                   },
                   "typeName": {
-                    "id": 16,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "170:4:0",
+                    "baseType": {
+                      "contractScope": null,
+                      "id": 37,
+                      "name": "FileCertificate",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 7,
+                      "src": "464:15:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FileCertificate_$7_storage_ptr",
+                        "typeString": "struct Authenticity.FileCertificate"
+                      }
+                    },
+                    "id": 38,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "464:17:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_array$_t_struct$_FileCertificate_$7_storage_$dyn_storage_ptr",
+                      "typeString": "struct Authenticity.FileCertificate[]"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "169:6:0"
+              "src": "463:26:0"
             },
-            "scope": 25,
-            "src": "134:74:0",
+            "scope": 86,
+            "src": "422:317:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 26,
-        "src": "25:185:0"
+        "scope": 87,
+        "src": "59:682:0"
       }
     ],
-    "src": "0:211:0"
+    "src": "0:742:0"
   },
   "compiler": {
     "name": "solc",
@@ -657,12 +2219,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x70509CbC4f412BD8c30e971707FF0c1a97Dae16d",
-      "transactionHash": "0xbfd13984ce9545cf0fa901bd2b48451b07bc88e044cb99da6c326feea9e7a11f"
+      "address": "0xd929F89522974793b3eA57C94fc999778dAc038d",
+      "transactionHash": "0xbfbbe263636c0105a48b2123665d2489aca3fe78146788344ff526d9c3bdaa34"
     }
   },
   "schemaVersion": "3.0.14",
-  "updatedAt": "2019-09-21T04:45:08.847Z",
+  "updatedAt": "2019-09-22T17:04:04.652Z",
   "devdoc": {
     "methods": {}
   },
