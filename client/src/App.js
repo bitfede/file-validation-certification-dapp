@@ -13,7 +13,8 @@ class App extends Component {
     web3: null,
     accounts: null,
     contract: null,
-    fileHash: null
+    fileHash: null,
+    fileSize: null
   };
 
   componentDidMount = async () => {
@@ -59,7 +60,6 @@ class App extends Component {
 
   refreshValue = async () => {
     const { accounts, contract } = this.state;
-
     //call the get method of the contract
     const response = await contract.methods.get().call();
     //debug
@@ -80,15 +80,31 @@ class App extends Component {
   uploadFile = async (e) => {
     console.log("*******")
     const uplFile = e.target.files[0]
+    const uplFileSize = uplFile.size
     console.log(uplFile)
     const reader = new FileReader();
     reader.onload = (e) => {
       var arrayBuffer = e.target.result;
 
         var hashValue = CryptoJS.SHA256(this.arrayBufferToWordArray(arrayBuffer)).toString(CryptoJS.enc.Hex);
-        this.setState({fileHash: hashValue}, () => {console.log("STATE >>", this.state)})
+        this.setState({fileHash: hashValue, fileSize: uplFileSize}, () => {console.log("STATE >>", this.state)})
     }
     reader.readAsArrayBuffer(uplFile);
+  }
+
+  outputHashAndCTA = () => {
+    if (this.state.fileHash === null) {
+      return (<p>No File Uploaded</p>)
+    }
+
+    return (
+      <p>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
+    )
+
+  }
+
+  certifyFile = async () => {
+    console.log("WRITE TX TO ETH CONTRACT")
   }
 
   render() {
@@ -103,12 +119,19 @@ class App extends Component {
         <div id="fileUplCont" >
           <input type="file" id="fileCert" onChange={(e) => this.uploadFile(e)} />
         </div>
+        <div>
+          {this.outputHashAndCTA()}
+        </div>
+        <div>
+          <p>Text descr:</p>
+          <button onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY FILE SIGNATURE ON BLOCKCHAIN</button>
+        </div>
         <hr />
-        <p>
-          Try changing the value stored on <strong>line 40</strong> of App.js.
-        </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-        <div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>
+        <h2>Previous Interactions</h2>
+        <p>work in progress..</p>
+        <hr />
+        <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
+        {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}
       </div>
     );
   }
