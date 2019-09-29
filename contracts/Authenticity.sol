@@ -6,12 +6,13 @@ contract Authenticity {
   struct FileCertificate {
     uint fileSize;
     string fileHash;
+    uint timestamp;
   }
 
   mapping (address => FileCertificate[]) usersMap;
 
   function certifyFile(uint fileSize, string memory fileHash) public payable {
-    FileCertificate memory newCertificate = FileCertificate(fileSize, fileHash);
+    FileCertificate memory newCertificate = FileCertificate(fileSize, fileHash, block.timestamp);
     usersMap[msg.sender].push(newCertificate);
   }
 
