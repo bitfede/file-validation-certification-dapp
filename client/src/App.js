@@ -54,11 +54,7 @@ class App extends Component {
     await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash).send({ from: accounts[0] });
 
     // // Get the value from the contract to prove it worked.
-    const response = await contract.methods.getHistory().call({ from: accounts[0] });
-    console.log("---------", response, "FILE CERTIFIED! updaed value-----")
-    //
-    // // Update state with the result.
-    this.setState({ storageValue: response });
+    this.getAcctHistory();
   };
 
   getAcctHistory = async () => {
@@ -113,7 +109,14 @@ class App extends Component {
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
-      return <p>File Size: </p>
+      let dateStamp = new Date(interaction.timestamp * 1000)
+      return (
+        <div key={counter++} style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: '50px', padding: '10px', border: '2px solid black'}}>
+          <p>File Size: <b>{interaction.fileSize}</b> bytes</p>
+          <p style={{textAlign: 'start'}}>Digital Signature: <b>{interaction.fileHash}</b></p>
+          <p>TimeStamp: <b>{dateStamp.toUTCString()}</b></p>
+        </div>
+      )
     })
 
     return (
@@ -144,7 +147,6 @@ class App extends Component {
         </div>
         <hr />
         <h2>Previous Interactions</h2>
-        <p>work in progress..</p>
         {this.outputHistory()}
         <hr />
         <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
