@@ -132,7 +132,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1>Certify the Existence of your file</h1>
+        <h1>Certify the Existence of any file</h1>
         <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
         <h2>Upload your file</h2>
         <div id="fileUplCont" >

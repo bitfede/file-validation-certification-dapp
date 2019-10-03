@@ -23,3 +23,5 @@ You are now ready to use the dApp on localhost.
 *Keep in mind that every time you restart the local blockchain you have to migrate your contracts again and also reset MetaMask by going to SETTINGS > ADVANCED > RESET ACCOUNT.*
 
 ## Deploy on testnet
+
+TODO
