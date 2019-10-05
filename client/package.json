@@ -1,5 +1,5 @@
 {
-  "name": "Decentralized File Certifier dApp",
+  "name": "file-timestamper",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
