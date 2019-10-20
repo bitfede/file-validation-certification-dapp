@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+
 import AuthenticityContract from "./contracts/Authenticity.json";
 import getWeb3 from "./utils/getWeb3";
 import CryptoJS from "crypto-js";
@@ -16,6 +18,10 @@ class App extends Component {
     fileHash: null,
     fileSize: null
   };
+
+  // TODO
+  // make event listener for addr and list addr tx filter by `to:contract_acct`
+
 
   componentDidMount = async () => {
     try {
@@ -134,6 +140,9 @@ class App extends Component {
     }
     return (
       <div className="App">
+      <Router>
+      <Route exact path="/" render={() => (<h1>ciao</h1>)} />
+      <Route path="/asd" render={() => (<h1>asd</h1>)} />
         <h1>Decentralized File Certifier dApp</h1>
         <h2>Certify the Existence of any file</h2>
         <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
@@ -154,6 +163,7 @@ class App extends Component {
         <hr />
         <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
         {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}
+      </Router>
       </div>
     );
   }
