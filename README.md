@@ -24,4 +24,16 @@ You are now ready to use the dApp on localhost.
 
 ## Deploy on testnet
 
-TODO
+To deploy on testnet we need a parity or geth node running so truffle can publish our contract to a testnet through the host:port using JSON RPC.
+
+### How I did it
+
+I wrote how I deployed the dApp on testnet on my blockchain-focused blog BlockchainLion.com, the link to the full article is here `insert-link`
+
+## Deploy on mainnet
+
+Same reasoning as deploying on testnet, but:
+
+- Parity needs to run a mainnet node
+- The `truffle-config.js` file needs to have a network config for mainnet
+- Real ether need to be sent to the account that will deploy the contracts
