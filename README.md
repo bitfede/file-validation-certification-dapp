@@ -28,7 +28,9 @@ To deploy on testnet we need a parity or geth node running so truffle can publis
 
 ### How I did it
 
-I wrote how I deployed the dApp on testnet on my blockchain-focused blog BlockchainLion.com, the link to the full article is here `insert-link`
+I wrote how I deployed the dApp on testnet on my blockchain-focused blog Blockchainlion.com.
+
+The link to the full article is here `insert-link`
 
 ## Deploy on mainnet
 
