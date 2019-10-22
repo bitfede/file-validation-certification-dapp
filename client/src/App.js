@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { FlexboxGrid, Button } from 'rsuite';
-import FileCertificatorPage from './components/FileCertificatorPage'
+import FileCertificatorPage from './components/FileCertificatorPage/FileCertificatorPage'
 
 import AuthenticityContract from "./contracts/Authenticity.json";
 

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { FlexboxGrid, Button } from 'rsuite';
 
-import AuthenticityContract from "../contracts/Authenticity.json";
+import AuthenticityContract from "../../contracts/Authenticity.json";
 
-import getWeb3 from "../utils/getWeb3";
+import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 // style
@@ -142,7 +142,8 @@ class FileCertificatorPage extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div>
+      <FlexboxGrid justify="center">
+        <FlexboxGrid.Item colspan={24} md={12}>
         <h1>Decentralized File Certifier dApp</h1>
         <h2>Certify the Existence of any file</h2>
         <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
@@ -154,16 +155,18 @@ class FileCertificatorPage extends Component {
           {this.outputFileHash()}
         </div>
         <div>
-          <p>Text descr:</p>
           <Button onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY FILE SIGNATURE ON BLOCKCHAIN</Button>
         </div>
-        <hr />
+        </FlexboxGrid.Item>
+        <hr  />
+        <FlexboxGrid.Item colspan={24} md={12}>
         <h2>Previous Interactions</h2>
         {this.outputHistory()}
         <hr />
         <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
         {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}
-      </div>
+        </FlexboxGrid.Item>
+      </FlexboxGrid>
     )
   }
 }
