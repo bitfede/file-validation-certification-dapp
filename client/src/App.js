@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { FlexboxGrid, Button } from 'rsuite';
+
 import FileCertificatorPage from './components/FileCertificatorPage/FileCertificatorPage'
+import NavBar from './components/NavBar/NavBar'
 
 import AuthenticityContract from "./contracts/Authenticity.json";
 
@@ -20,7 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
-      { /*<nav>navbar here</nav> */}
+      <NavBar />
       <Router>
       <Route exact path="/" component={FileCertificatorPage} />
       <Route path="/asd" render={() => (<h1>asd</h1>)} />
