@@ -1,11 +1,13 @@
+//CORE DEPENDENCIES
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import { FlexboxGrid, Button } from 'rsuite';
-
 import AuthenticityContract from "../../contracts/Authenticity.json";
-
 import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
+
+//UI COMPONENTS
+import { FlexboxGrid, Button } from 'rsuite';
+import { Icon } from 'rsuite';
 
 // style
 import 'rsuite/dist/styles/rsuite-default.css'
@@ -101,7 +103,7 @@ class FileCertificatorPage extends Component {
 
   outputFileHash = () => {
     if (this.state.fileHash === null) {
-      return (<p>No File Uploaded</p>)
+      return (null)
     }
 
     return (
@@ -121,7 +123,7 @@ class FileCertificatorPage extends Component {
       console.log("--> ", interaction)
       let dateStamp = new Date(interaction.timestamp * 1000)
       return (
-        <div key={counter++} style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: '50px', padding: '10px', border: '2px solid black'}}>
+        <div key={counter++} className={"pastInteractionBox"} >
           <p>File Size: <b>{interaction.fileSize}</b> bytes</p>
           <p style={{textAlign: 'start'}}>Digital Signature: <b>{interaction.fileHash}</b></p>
           <p>TimeStamp: <b>{dateStamp.toUTCString()}</b></p>
@@ -136,31 +138,48 @@ class FileCertificatorPage extends Component {
     )
   }
 
+  renderCertifyBtn() {
+    if (!this.state.fileHash) {
+      return (
+        null
+      )
+    }
+
+    return (
+      <Button onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY FILE ON THE BLOCKCHAIN</Button>
+    )
+  }
+
 
   render() {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <FlexboxGrid justify="center">
+      <FlexboxGrid className={"globalCont"} justify="center">
         <FlexboxGrid.Item colspan={24} md={12}>
-        <h1>Decentralized File Certifier dApp</h1>
-        <h2>Certify the Existence of any file</h2>
-        <p>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-        <h2>Upload your file</h2>
-        <div id="fileUplCont" >
-          <input type="file" id="fileCert" onChange={(e) => this.uploadFile(e)} />
+        <h1 className={"mainh1title"}>Decentralized File Certifier dApp</h1>
+        <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
+        <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
+        <h3 className={"mainh3title"}>Upload your file</h3>
+
+        <div id="fileUplCont">
+          <label className={"fileCertLabel"} for="fileCert"><Icon id={"uploadIcon"} icon='upload2' /><span>Tap here to start uploading</span></label>
+          <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
         </div>
+
         <div>
           {this.outputFileHash()}
         </div>
         <div>
-          <Button onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY FILE SIGNATURE ON BLOCKCHAIN</Button>
+
+          {this.renderCertifyBtn()}
+
         </div>
         </FlexboxGrid.Item>
         <hr  />
         <FlexboxGrid.Item colspan={24} md={12}>
-        <h2>Previous Interactions</h2>
+        <h2 className={"mainh2title"}>Previous Interactions</h2>
         {this.outputHistory()}
         <hr />
         <p style={{fontSize: '0.5rem'}}>created by fgdf</p>

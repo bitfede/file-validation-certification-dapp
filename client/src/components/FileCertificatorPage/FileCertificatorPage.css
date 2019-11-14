@@ -1,8 +1,76 @@
-h1 {
-  color: blue;
+.globalCont {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.mainh1title {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.mainh2title {
+  font-size: 1.4rem;
+  margin-bottom: 3vh;
+}
+
+.mainh3title {
+  font-size: 1.2rem;
+  margin-bottom: 5vh;
+}
+
+.introPara {
+  font-size: 0.9rem;
+  margin-bottom: 3vh;
+}
+
+.uploadFileTitle {
+  font-size: 1.5rem;
+  margin-bottom: 2vh;
+}
+
+#fileUplCont {
+  margin-bottom: 5vh;
+}
+
+#fileCert {
+  margin-top: 2vh;
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.fileCertLabel {
+  font-size: 1rem;
+  margin-bottom: 1vh;
+  padding: 20px;
+  background: grey;
+  color: white;
+}
+
+#uploadIcon {
+  margin-right: 20px;
 }
 
 .sectiondivider {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.pastInteractionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 50px;
+  padding: 10px;
+  border: 2px solid black;
+  overflow: scroll;
+}
+
+/*
+  DESKTOP STYLES
+ */
