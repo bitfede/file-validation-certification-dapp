@@ -7,10 +7,9 @@ import CryptoJS from "crypto-js";
 
 //UI COMPONENTS
 import { FlexboxGrid, Button } from 'rsuite';
-import { Icon } from 'rsuite';
+import { List, Panel, Icon } from 'rsuite';
 
 // style
-import 'rsuite/dist/styles/rsuite-default.css'
 import "./FileCertificatorPage.css";
 
 class FileCertificatorPage extends Component {
@@ -107,7 +106,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <p>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
+      <p className={"fileSignature"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
     )
 
   }
@@ -123,16 +122,16 @@ class FileCertificatorPage extends Component {
       console.log("--> ", interaction)
       let dateStamp = new Date(interaction.timestamp * 1000)
       return (
-        <div key={counter++} className={"pastInteractionBox"} >
-          <p>File Size: <b>{interaction.fileSize}</b> bytes</p>
-          <p style={{textAlign: 'start'}}>Digital Signature: <b>{interaction.fileHash}</b></p>
-          <p>TimeStamp: <b>{dateStamp.toUTCString()}</b></p>
-        </div>
+        <Panel header={dateStamp.toUTCString().slice(0, 16)} shaded collapsible className={"listItemTx"} key={counter++}>
+          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
+          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.fileSize}</b> bytes</p>
+          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">✍️</span>  Digital Signature: <b>{interaction.fileHash}</b></p>
+        </Panel>
       )
     })
 
     return (
-      <div>
+      <div className={"pastInteractionBox"}>
         {interactions}
       </div>
     )
@@ -157,14 +156,14 @@ class FileCertificatorPage extends Component {
     }
     return (
       <FlexboxGrid className={"globalCont"} justify="center">
-        <FlexboxGrid.Item colspan={24} md={12}>
+        <FlexboxGrid.Item align={"middle"} colspan={24} md={12}>
         <h1 className={"mainh1title"}>Decentralized File Certifier dApp</h1>
         <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
         <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
         <h3 className={"mainh3title"}>Upload your file</h3>
 
         <div id="fileUplCont">
-          <label className={"fileCertLabel"} for="fileCert"><Icon id={"uploadIcon"} icon='upload2' /><span>Tap here to start uploading</span></label>
+          <label className={"fileCertLabel"} htmlFor="fileCert"><Icon id={"uploadIcon"} icon='upload2' size="lg" /><span>Tap here to start uploading</span></label>
           <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
         </div>
 
@@ -178,7 +177,7 @@ class FileCertificatorPage extends Component {
         </div>
         </FlexboxGrid.Item>
         <hr  />
-        <FlexboxGrid.Item colspan={24} md={12}>
+        <FlexboxGrid.Item align={"middle"} colspan={24} md={12}>
         <h2 className={"mainh2title"}>Previous Interactions</h2>
         {this.outputHistory()}
         <hr />
