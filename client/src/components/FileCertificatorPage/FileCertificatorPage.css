@@ -13,16 +13,31 @@
 .mainh2title {
   font-size: 1.4rem;
   margin-bottom: 3vh;
+  text-align: center;
+  margin-top: 4vh;
 }
 
 .mainh3title {
   font-size: 1.2rem;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 }
 
 .introPara {
   font-size: 0.9rem;
   margin-bottom: 3vh;
+}
+
+.chevronContainer {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.chevrons {
+
 }
 
 .uploadFileTitle {
@@ -34,6 +49,10 @@
   margin-bottom: 5vh;
 }
 
+#fileUplCont label {
+  margin: 0;
+}
+
 #fileCert {
   margin-top: 2vh;
   width: 0.1px;
@@ -42,6 +61,11 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+#uploadIcon svg {
+  /* padding-right: 10px; */
+  margin: 0;
 }
 
 .fileCertLabel {
@@ -80,14 +104,77 @@
 }
 
 .listItemTx {
-  padding: 10px;
-  border-bottom: 1px solid;
+  padding: 5px;
+  margin-bottom: 30px;
+  border-left: 3px solid;
+  /* border-radius: 20px; */
 }
 
 .historyTxDataPnt {
-  width: 650px;
+  /* width: 240px; */
+  margin: 0;
+  word-wrap: break-word;
 }
 
 /*
   DESKTOP STYLES
  */
+
+
+
+ /*
+      #########
+      ANIMATIONS
+      #########
+  */
+
+  .shake-vertical {
+  	animation: shake-vertical 15s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+  }
+
+  .fade-in {
+  	animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+
+/**
+ * ----------------------------------------
+ * animation shake-vertical
+ * ----------------------------------------
+ */
+@keyframes shake-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-13px);
+  }
+  20%,
+  40%,
+  60% {
+    transform: translateY(13px);
+  }
+  80% {
+    transform: translateY(6.4px);
+  }
+  90% {
+    transform: translateY(-6.4px);
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation fade-in
+ * ----------------------------------------
+ */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

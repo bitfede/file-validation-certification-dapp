@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import { FlexboxGrid, Button } from 'rsuite';
 
 import FileCertificatorPage from './components/FileCertificatorPage/FileCertificatorPage'
 import NavBar from './components/NavBar/NavBar'
@@ -11,8 +10,8 @@ import getWeb3 from "./utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 // import default style
-import 'rsuite/dist/styles/rsuite-default.css'
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
 import "./App.css";
 
 class App extends Component {

@@ -6,10 +6,12 @@ import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 //UI COMPONENTS
-import { FlexboxGrid, Button } from 'rsuite';
-import { List, Panel, Icon } from 'rsuite';
+import { faChevronDown, faInfoCircle, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {ListGroup, ListGroupItem, Card, CardBody, Button } from 'shards-react'
 
-// style
+// assets & style
+
 import "./FileCertificatorPage.css";
 
 class FileCertificatorPage extends Component {
@@ -106,7 +108,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <p className={"fileSignature"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
+      <p className={"fileSignature flicker-in-1"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
     )
 
   }
@@ -120,13 +122,17 @@ class FileCertificatorPage extends Component {
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
+      const truncatedHash = interaction.fileHash.substring(0, 7)
       let dateStamp = new Date(interaction.timestamp * 1000)
       return (
-        <Panel header={dateStamp.toUTCString().slice(0, 16)} shaded collapsible className={"listItemTx"} key={counter++}>
-          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
-          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.fileSize}</b> bytes</p>
-          <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">✍️</span>  Digital Signature: <b>{interaction.fileHash}</b></p>
-        </Panel>
+        <Card className={"listItemTx"} key={counter++}>
+          <CardBody>
+            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
+            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.fileSize}</b> bytes</p>
+            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">✍️</span>  Digital Signature: <b>{truncatedHash}...</b></p>
+          </CardBody>
+
+      </Card>
       )
     })
 
@@ -145,7 +151,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <Button onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY FILE ON THE BLOCKCHAIN</Button>
+      <Button className={"flicker-in-1"} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
     )
   }
 
@@ -155,36 +161,39 @@ class FileCertificatorPage extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <FlexboxGrid className={"globalCont"} justify="center">
-        <FlexboxGrid.Item align={"middle"} colspan={24} md={12}>
-        <h1 className={"mainh1title"}>Decentralized File Certifier dApp</h1>
-        <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
-        <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-        <h3 className={"mainh3title"}>Upload your file</h3>
+      <div className={"globalCont"} justify="center">
+        <div align={"middle"} >
+          <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
+          <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
+          <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
+          <h3 className={"mainh3title"}>Upload your file</h3>
 
-        <div id="fileUplCont">
-          <label className={"fileCertLabel"} htmlFor="fileCert"><Icon id={"uploadIcon"} icon='upload2' size="lg" /><span>Tap here to start uploading</span></label>
-          <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
-        </div>
+          <div className={"chevronContainer"}>
+            <FontAwesomeIcon id={"chevron1"} className={"shake-vertical"} icon={faChevronDown} />
+            <FontAwesomeIcon id={"chevron2"} className={"shake-vertical"} icon={faChevronDown} />
+            <FontAwesomeIcon id={"chevron3"} className={"shake-vertical"} icon={faChevronDown} />
+          </div>
 
-        <div>
-          {this.outputFileHash()}
-        </div>
-        <div>
+          <div id="fileUplCont">
+            <Button><label  htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
+            <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
+          </div>
 
-          {this.renderCertifyBtn()}
+          <div>
+            {this.outputFileHash()}
+          </div>
+          <div>
+            {this.renderCertifyBtn()}
+          </div>
+      </div>
 
-        </div>
-        </FlexboxGrid.Item>
-        <hr  />
-        <FlexboxGrid.Item align={"middle"} colspan={24} md={12}>
-        <h2 className={"mainh2title"}>Previous Interactions</h2>
-        {this.outputHistory()}
-        <hr />
-        <p style={{fontSize: '0.5rem'}}>created by fgdf</p>
+      <div >
+          <h2 className={"mainh2title"}>Previous Interactions</h2>
+          {this.outputHistory()}
+          <p style={{fontSize: '0.5rem', textAlign: 'center'}}>created by fgdf</p>
         {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}
-        </FlexboxGrid.Item>
-      </FlexboxGrid>
+      </div>
+    </div>
     )
   }
 }

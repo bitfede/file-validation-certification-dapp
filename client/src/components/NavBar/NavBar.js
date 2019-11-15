@@ -1,43 +1,102 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import { FlexboxGrid, Button, Navbar, Dropdown, Nav, Icon } from 'rsuite';
+
+// UI COMPONENTS
+import { faSearch, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  FormInput,
+  Collapse
+} from "shards-react";
 
 // style
-import 'rsuite/dist/styles/rsuite-default.css'
 import "./NavBar.css";
 
 import iconimg from "../../assets/iconz.png"
 
 class NavBar extends Component {
 
-  state = {
-    test: 'Heelloo'
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dropdownOpen: false,
+      collapseOpen: false
+    };
+  }
+
+  toggleDropdown() {
+  this.setState({
+      ...this.state,
+      ...{
+        dropdownOpen: !this.state.dropdownOpen
+      }
+    });
+  }
+
+  toggleNavbar() {
+    this.setState({
+      ...this.state,
+      ...{
+        collapseOpen: !this.state.collapseOpen
+      }
+    });
+  }
 
 
 
   render() {
 
     return (
-      <Navbar>
-        <Navbar.Header>
-          <a href="#"><img style={{width: '56px', height: '56px'}} src={iconimg} className="navbar-brand logo" /></a>
-        </Navbar.Header>
-        <Navbar.Body>
-          <Nav>
-            <Nav.Item icon={<Icon icon="home" />} >Home</Nav.Item>
-            {/* <Nav.Item>Products</Nav.Item> */}
-            <Dropdown title="About">
-              <Dropdown.Item>Company</Dropdown.Item>
-              <Dropdown.Item>Team</Dropdown.Item>
-              <Dropdown.Item>Contact</Dropdown.Item>
-            </Dropdown>
-          </Nav>
-          <Nav pullRight>
-            <Nav.Item icon={<Icon icon="cog" />} >Settings</Nav.Item>
-          </Nav>
-        </Navbar.Body>
-      </Navbar>
+      <Navbar type="dark" theme="primary" expand="md">
+  <NavbarBrand href="#">BFT</NavbarBrand>
+  <NavbarToggler onClick={() => this.toggleNavbar()} />
+
+  <Collapse open={this.state.collapseOpen} navbar>
+    <Nav navbar>
+      <NavItem>
+        <NavLink active href="#">
+          Active
+        </NavLink>
+      </NavItem>
+
+      <Dropdown
+        open={this.state.dropdownOpen}
+        toggle={() => this.toggleDropdown()}
+      >
+        <DropdownToggle nav caret>
+          Dropdown
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem>Action</DropdownItem>
+          <DropdownItem>Another action</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </Nav>
+
+    <Nav navbar className="ml-auto">
+    <NavItem>
+      <NavLink href="#">
+        <FontAwesomeIcon icon={faInfoCircle} />
+      </NavLink>
+    </NavItem>
+    </Nav>
+  </Collapse>
+</Navbar>
     )
   }
 }
