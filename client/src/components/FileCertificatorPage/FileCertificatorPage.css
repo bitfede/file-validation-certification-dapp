@@ -19,7 +19,7 @@
 
 .mainh3title {
   font-size: 1.2rem;
-  margin-bottom: 2vh;
+  margin-bottom: 4vh;
 }
 
 .introPara {
@@ -33,7 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2vh;
+  margin-bottom: 4vh;
 }
 
 .chevrons {
@@ -47,10 +47,13 @@
 
 #fileUplCont {
   margin-bottom: 5vh;
+  margin-left: 10px;
+
 }
 
 #fileUplCont label {
   margin: 0;
+  cursor: pointer;
 }
 
 #fileCert {
@@ -61,6 +64,11 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+.certifyBtn {
+  cursor: pointer;
+  z-index: 100;
 }
 
 #uploadIcon svg {
@@ -110,6 +118,10 @@
   /* border-radius: 20px; */
 }
 
+.listItemTx:hover {
+	animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .historyTxDataPnt {
   /* width: 240px; */
   margin: 0;
@@ -135,6 +147,19 @@
   .fade-in {
   	animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
+
+  .shadow-pop-tr {
+  	animation: shadow-pop-tr 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+  }
+
+  .shadow-pop-tr-inverse {
+    animation: shadow-pop-tr-inverse 0.05s steps(100000, end) both;
+  }
+
+  .pulsate-bck {
+	        animation: pulsate-bck 0.5s ease-in-out both;
+  }
+
 
 /**
  * ----------------------------------------
@@ -176,5 +201,63 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation shadow-drop-center
+ * ----------------------------------------
+ */
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+
+
+/* 3D POP ANIMATION */
+@keyframes shadow-pop-tr {
+  0% {
+    box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+    transform: translateX(-8px) translateY(8px);
+  }
+}
+
+@keyframes shadow-pop-tr-inverse {
+  0% {
+    box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e;
+    transform: translateX(-8px) translateY(8px);
+  }
+  100% {
+    box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation pulsate-bck
+ * ----------------------------------------
+ */
+
+@keyframes pulsate-bck {
+  0% {
+            transform: scale(1);
+  }
+  50% {
+            transform: scale(0.9);
+  }
+  100% {
+            transform: scale(1);
   }
 }

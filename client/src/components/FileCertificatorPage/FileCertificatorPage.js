@@ -22,7 +22,10 @@ class FileCertificatorPage extends Component {
     accounts: null,
     contract: null,
     fileHash: null,
-    fileSize: null
+    fileSize: null,
+    clickAnimation: 'shadow-pop-tr',
+    clickAnimation2: '',
+    fadeInAnimation: 'fade-in'
   };
 
   // TODO
@@ -61,6 +64,8 @@ class FileCertificatorPage extends Component {
       fileSize: this.state.fileSize,
       fileHash: this.state.fileHash
     }
+    //triggers UI animation
+    this.clickAnimation2()
     // Stores the file info into the blockchain
     await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash).send({ from: accounts[0] });
 
@@ -102,13 +107,32 @@ class FileCertificatorPage extends Component {
     reader.readAsArrayBuffer(uplFile);
   }
 
+  clickAnimation = (e) => {
+    this.setState({clickAnimation: 'shadow-pop-tr-inverse'})
+
+    setTimeout( () => {
+      this.setState({clickAnimation: 'shadow-pop-tr'})
+    }, 100)
+  }
+
+  clickAnimation2 = (e) => {
+    this.setState({clickAnimation2: 'pulsate-bck', fadeInAnimation: ''})
+
+    setTimeout( () => {
+      this.setState({clickAnimation2: ''})
+    }, 500)
+  }
+
+
+  // UI RENDER FX
+
   outputFileHash = () => {
     if (this.state.fileHash === null) {
       return (null)
     }
 
     return (
-      <p className={"fileSignature flicker-in-1"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
+      <p className={"fileSignature fade-in"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
     )
 
   }
@@ -122,7 +146,7 @@ class FileCertificatorPage extends Component {
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
-      const truncatedHash = interaction.fileHash.substring(0, 7)
+      const truncatedHash = interaction.fileHash
       let dateStamp = new Date(interaction.timestamp * 1000)
       return (
         <Card className={"listItemTx"} key={counter++}>
@@ -151,7 +175,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <Button className={"flicker-in-1"} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
+      <Button className={`${this.state.fadeInAnimation} ${this.state.clickAnimation2}`} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
     )
   }
 
@@ -169,13 +193,13 @@ class FileCertificatorPage extends Component {
           <h3 className={"mainh3title"}>Upload your file</h3>
 
           <div className={"chevronContainer"}>
-            <FontAwesomeIcon id={"chevron1"} className={"shake-vertical"} icon={faChevronDown} />
-            <FontAwesomeIcon id={"chevron2"} className={"shake-vertical"} icon={faChevronDown} />
-            <FontAwesomeIcon id={"chevron3"} className={"shake-vertical"} icon={faChevronDown} />
+            <FontAwesomeIcon id={"chevron1"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
+            <FontAwesomeIcon id={"chevron2"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
+            <FontAwesomeIcon id={"chevron3"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
           </div>
 
           <div id="fileUplCont">
-            <Button><label  htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
+            <Button onClick={() => this.clickAnimation()} className={`certifyBtn ${this.state.clickAnimation}`}><label htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
             <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
           </div>
 
