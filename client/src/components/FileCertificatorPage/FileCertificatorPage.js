@@ -16,18 +16,20 @@ import "./FileCertificatorPage.css";
 
 class FileCertificatorPage extends Component {
 
-  state = {
-    accountHistory: null,
-    web3: null,
-    accounts: null,
-    contract: null,
-    fileHash: null,
-    fileSize: null,
-    clickAnimation: 'shadow-pop-tr',
-    clickAnimation2: '',
-    fadeInAnimation: 'fade-in'
-  };
-
+  constructor() {
+    super()
+    this.state = {
+      accountHistory: null,
+      web3: null,
+      accounts: null,
+      contract: null,
+      fileHash: null,
+      fileSize: null,
+      clickAnimation: 'shadow-pop-tr',
+      clickAnimation2: '',
+      fadeInAnimation: 'fade-in'
+    };
+  }
   // TODO
   // make event listener for addr and list addr tx filter by `to:contract_acct`
 
@@ -146,7 +148,7 @@ class FileCertificatorPage extends Component {
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
-      const truncatedHash = interaction.fileHash
+      const truncatedHash = interaction.fileHash.substring(0, 7)
       let dateStamp = new Date(interaction.timestamp * 1000)
       return (
         <Card className={"listItemTx"} key={counter++}>
@@ -186,12 +188,13 @@ class FileCertificatorPage extends Component {
     }
     return (
       <div className={"globalCont"} justify="center">
-        <div align={"middle"} >
-          <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
-          <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
-          <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-          <h3 className={"mainh3title"}>Upload your file</h3>
-
+        <section>
+          <div ref={this.vantaRef} id={"heroTitles"}>
+            <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
+            <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
+            <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
+            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 400 }) } outline pill size="lg">Upload your file</Button></h3>
+          </div>
           <div className={"chevronContainer"}>
             <FontAwesomeIcon id={"chevron1"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
             <FontAwesomeIcon id={"chevron2"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
@@ -209,7 +212,7 @@ class FileCertificatorPage extends Component {
           <div>
             {this.renderCertifyBtn()}
           </div>
-      </div>
+      </section>
 
       <div >
           <h2 className={"mainh2title"}>Previous Interactions</h2>
