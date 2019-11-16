@@ -135,7 +135,17 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <p className={"fileSignature fade-in"}>This file's digital signature is: <strong>{this.state.fileHash}</strong> </p>
+      <div className={"stepsContainer"}>
+        <h4 className={"tutorialSteps"}>Step 2:</h4>
+        <p className={"tutorialParags"}>Review the metadata</p>
+        <div className={"fileMetadataCont"}>
+          <p className={"fileSignature fade-in"}>
+            <u>SHA256 DIGITAL SIGNATURE:</u> <strong>{this.state.fileHash}</strong>
+          </p>
+          <p className={"fileSize fade-in"}><u>FILE SIZE (BYTES):</u></p>
+          <p className={"fileSize2 fade-in"}><strong>{this.state.fileSize}</strong></p>
+        </div>
+      </div>
     )
 
   }
@@ -178,7 +188,11 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <Button className={`${this.state.fadeInAnimation} ${this.state.clickAnimation2} certifyFileFinalBtn`} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}><FontAwesomeIcon icon={faStamp} ></FontAwesomeIcon>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
+      <div className={"stepsContainer"}>
+        <h4 className={"tutorialSteps"}>Step 3:</h4>
+        <p className={"tutorialParags"}>Timestamp the metadata into the blockchain</p>
+        <Button className={`${this.state.fadeInAnimation} ${this.state.clickAnimation2} certifyFileFinalBtn`} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}><FontAwesomeIcon icon={faStamp} ></FontAwesomeIcon>CERTIFY FILE</Button>
+      </div>
     )
   }
 
@@ -205,11 +219,17 @@ class FileCertificatorPage extends Component {
           </div>
 
           <div id="fileUplCont">
-            <Button size={'lg'} onClick={() => this.clickAnimation()} className={`certifyBtn ${this.state.clickAnimation}`}><label htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
+            <div className={"stepsContainer"}>
+            <h4 className={"tutorialSteps"}>Step 1:</h4>
+            <p className={"tutorialParags"}>Select the file that you want to notarize</p>
+            </div>
+            <Button size={'lg'} onClick={() => this.clickAnimation()} className={`certifyBtn ${this.state.clickAnimation}`}><label htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />CHOOSE FILE</label></Button>
             <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
+
 
             {this.outputFileHash()}
             {this.renderCertifyBtn()}
+
           </div>
       </section>
 
@@ -218,7 +238,7 @@ class FileCertificatorPage extends Component {
           {this.outputHistory()}
       </div>
       <footer>
-        <p className={"footerText"} style={{fontSize: '0.5rem', textAlign: 'center'}}>created by fgdf</p>
+        <p className={"footerText"} style={{fontSize: '0.5rem', textAlign: 'center'}}>created by <a href={"http://defaverifederi.co"}>Federico De Faveri</a></p>
       </footer>
     </div>
     </>

@@ -26,6 +26,7 @@ import {
 import "./NavBar.css";
 
 import iconimg from "../../assets/iconz.png"
+import logoWeb from "../../assets/logo-web.png"
 
 class NavBar extends Component {
 
@@ -62,14 +63,16 @@ class NavBar extends Component {
 
     return (
       <Navbar id={"appNavBar"} type="dark" expand="md">
-          <NavbarBrand href="#">BFT</NavbarBrand>
+          <NavbarBrand href="#">
+            <img id={"logoNavBar"} src={logoWeb} /> <b>NOTAR<span>X</span></b>
+          </NavbarBrand>
           <NavbarToggler onClick={() => this.toggleNavbar()} />
 
           <Collapse open={this.state.collapseOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink active href="#">
-                  Active
+                <NavLink href="#">
+                  Home
                 </NavLink>
               </NavItem>
 
@@ -78,12 +81,24 @@ class NavBar extends Component {
                 toggle={() => this.toggleDropdown()}
               >
                 <DropdownToggle nav caret>
-                  Dropdown
+                  About
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Action</DropdownItem>
-                  <DropdownItem>Another action</DropdownItem>
-                  <DropdownItem>Something else here</DropdownItem>
+                  <DropdownItem>
+                      <a className={"navLink"} href="/faq">
+                        FAQs
+                      </a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a className={"navLink"} href="/purpose">
+                      Purpose
+                    </a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a className={"navLink"} href="/about-me">
+                      Author
+                    </a>
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </Nav>
