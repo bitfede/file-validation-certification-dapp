@@ -1,0 +1,31 @@
+#globalCont {
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#mainFaqTitle {
+  font-size: 1.7rem;
+  margin-bottom: 4vh;
+}
+
+.questionAnswerCont {
+  margin-bottom: 3vh;
+}
+
+.questionAnswerCont strong {
+  font-weight: 700;
+}
+
+.questionAnswerCont span {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.question {
+  margin-bottom: 2vh;
+}

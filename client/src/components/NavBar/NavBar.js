@@ -63,7 +63,7 @@ class NavBar extends Component {
 
     return (
       <Navbar id={"appNavBar"} type="dark" expand="md">
-          <NavbarBrand href="#">
+          <NavbarBrand href="/">
             <img id={"logoNavBar"} src={logoWeb} /> <b>NOTAR<span>X</span></b>
           </NavbarBrand>
           <NavbarToggler onClick={() => this.toggleNavbar()} />
@@ -71,8 +71,8 @@ class NavBar extends Component {
           <Collapse open={this.state.collapseOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="#">
-                  Home
+                <NavLink href="/faq">
+                  FAQs
                 </NavLink>
               </NavItem>
 
@@ -85,8 +85,8 @@ class NavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
-                      <a className={"navLink"} href="/faq">
-                        FAQs
+                      <a className={"navLink"} href="/thanks">
+                        Thanks
                       </a>
                   </DropdownItem>
                   <DropdownItem>
