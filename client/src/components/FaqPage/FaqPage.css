@@ -24,8 +24,19 @@
 .questionAnswerCont span {
   font-weight: 700;
   font-size: 2rem;
+  display: block;
 }
 
 .question {
   margin-bottom: 2vh;
+}
+
+
+/* DESKTOP STYLES */
+
+@media (min-width: 1000px) {
+  .questionAnswerCont span {
+    display: inline !important;
+    margin-right: 10px;
+  }
 }

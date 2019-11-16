@@ -38,8 +38,8 @@ class FileCertificatorPage extends Component {
     let faqs = faqData.map( (faq) => {
         return (
           <div className={"questionAnswerCont"}>
-            <p className={"question"}><span>Q</span><br/><strong>{faq.q}</strong></p>
-            <p className={"answer"}><span>A</span><br/>{faq.a}</p>
+            <p className={"question"}><span>Q)</span> <strong>{faq.q}</strong></p>
+            <p className={"answer"}><span>A)</span> {faq.a}</p>
           </div>
         )
     })

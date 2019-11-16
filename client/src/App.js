@@ -28,6 +28,9 @@ class App extends Component {
       <Route path="/faq" component={FaqPage} />
 
       </Router>
+      <footer>
+        <p className={"footerText"}>© 2020 | Made by <a target="_blank" href={"http://defaverifederi.co"}>Federico De Faveri</a></p>
+      </footer>
       </div>
     );
   }

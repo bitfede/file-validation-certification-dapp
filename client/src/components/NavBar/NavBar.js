@@ -76,7 +76,13 @@ class NavBar extends Component {
                 </NavLink>
               </NavItem>
 
-              <Dropdown
+              <NavItem>
+                <NavLink href="/about">
+                  About
+                </NavLink>
+              </NavItem>
+
+              {/*<Dropdown
                 open={this.state.dropdownOpen}
                 toggle={() => this.toggleDropdown()}
               >
@@ -85,22 +91,23 @@ class NavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem>
-                      <a className={"navLink"} href="/thanks">
-                        Thanks
+                      <a className={"navLink"} href="/purpose">
+                        Purpose
                       </a>
                   </DropdownItem>
                   <DropdownItem>
-                    <a className={"navLink"} href="/purpose">
-                      Purpose
-                    </a>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <a className={"navLink"} href="/about-me">
+                    <a className={"navLink"} href="/author">
                       Author
                     </a>
                   </DropdownItem>
+                  <DropdownItem>
+                    <a className={"navLink"} href="/thanks">
+                      Thanks
+                    </a>
+                  </DropdownItem>
                 </DropdownMenu>
-              </Dropdown>
+              </Dropdown> */}
+
             </Nav>
 
             <Nav navbar className="ml-auto">

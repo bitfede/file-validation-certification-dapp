@@ -237,9 +237,7 @@ class FileCertificatorPage extends Component {
           <h2 className={"mainh2title pastInteractionsTit"}>Previous Interactions</h2>
           {this.outputHistory()}
       </div>
-      <footer>
-        <p className={"footerText"} style={{fontSize: '0.5rem', textAlign: 'center'}}>created by <a href={"http://defaverifederi.co"}>Federico De Faveri</a></p>
-      </footer>
+
     </div>
     </>
     )

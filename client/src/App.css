@@ -39,6 +39,13 @@ h1,h2,h3,h4,h5,h6 {
   padding: 15px;
 }
 
+
+.footerText {
+  margin-top: 3.7vh;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
 /* END AUTHOR WRITTEN STYLES */
 
 @keyframes App-logo-spin {
