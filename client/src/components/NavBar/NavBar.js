@@ -61,42 +61,42 @@ class NavBar extends Component {
   render() {
 
     return (
-      <Navbar type="dark" theme="primary" expand="md">
-  <NavbarBrand href="#">BFT</NavbarBrand>
-  <NavbarToggler onClick={() => this.toggleNavbar()} />
+      <Navbar id={"appNavBar"} type="dark" expand="md">
+          <NavbarBrand href="#">BFT</NavbarBrand>
+          <NavbarToggler onClick={() => this.toggleNavbar()} />
 
-  <Collapse open={this.state.collapseOpen} navbar>
-    <Nav navbar>
-      <NavItem>
-        <NavLink active href="#">
-          Active
-        </NavLink>
-      </NavItem>
+          <Collapse open={this.state.collapseOpen} navbar>
+            <Nav navbar>
+              <NavItem>
+                <NavLink active href="#">
+                  Active
+                </NavLink>
+              </NavItem>
 
-      <Dropdown
-        open={this.state.dropdownOpen}
-        toggle={() => this.toggleDropdown()}
-      >
-        <DropdownToggle nav caret>
-          Dropdown
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem>Action</DropdownItem>
-          <DropdownItem>Another action</DropdownItem>
-          <DropdownItem>Something else here</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-    </Nav>
+              <Dropdown
+                open={this.state.dropdownOpen}
+                toggle={() => this.toggleDropdown()}
+              >
+                <DropdownToggle nav caret>
+                  Dropdown
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>Action</DropdownItem>
+                  <DropdownItem>Another action</DropdownItem>
+                  <DropdownItem>Something else here</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Nav>
 
-    <Nav navbar className="ml-auto">
-    <NavItem>
-      <NavLink href="#">
-        <FontAwesomeIcon icon={faInfoCircle} />
-      </NavLink>
-    </NavItem>
-    </Nav>
-  </Collapse>
-</Navbar>
+            <Nav navbar className="ml-auto">
+            <NavItem>
+              <NavLink href="#">
+                <FontAwesomeIcon icon={faInfoCircle} />
+              </NavLink>
+            </NavItem>
+            </Nav>
+          </Collapse>
+      </Navbar>
     )
   }
 }

@@ -24,6 +24,11 @@
 
 .h3titleCta {
   margin-top: 12vh;
+  background: white;
+}
+
+.h3titleCta button {
+  font-size: 0.8rem;
 }
 
 .introPara {
@@ -38,6 +43,13 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+}
+
+.backParticles {
+  background: #fff;
+  position: absolute;
+  height: 90vh !important;
+  z-index: -10;
 }
 
 .chevronContainer {
@@ -59,11 +71,16 @@
 }
 
 #fileUplCont {
-  margin-bottom: 5vh;
-  margin-left: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #4c5464;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 30px;
+  padding-bottom: 45px;
+  border-radius: 20px;
 }
 
 #fileUplCont label {
@@ -79,6 +96,7 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+  font-size: 1rem;
 }
 
 .certifyBtn {
@@ -104,12 +122,34 @@
 }
 
 .fileSignature {
-  overflow-wrap: break-word;
+  margin-top: 5vh;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
-.sectiondivider {
-  padding-top: 30px;
-  padding-bottom: 30px;
+.fileSignature strong {
+  font-weight: 700;
+  font-size: 2vw;
+}
+
+.certifyFileFinalBtn {
+  font-size: 1.2rem !important;
+}
+
+.certifyFileFinalBtn svg {
+  margin-right: 15px;
+  font-size: 1.3rem;
+}
+
+.pastInterContainer {
+  margin-top: 10vh;
+}
+
+.pastInteractionsTit {
+  padding-top: 2vh;
 }
 
 .pastInteractionBox {
@@ -119,10 +159,6 @@
   margin-top: 0px;
   padding: 10px;
   text-align: start;
-}
-
-.custom-timeline {
-  width: 100vw;
 }
 
 .listItemTx {
@@ -159,8 +195,7 @@
      align-items: flex-start;
      align-content: center;
      flex-wrap: wrap;
-     background: rgb(69,104,255);
-      background: radial-gradient(circle, rgba(69,104,255,1) 23%, rgba(255,255,255,0) 100%);
+
    }
 
    .listItemTx {
@@ -171,6 +206,10 @@
 
  }
 
+
+.footerText {
+  margin-top: 3.7vh;
+}
 
 
 

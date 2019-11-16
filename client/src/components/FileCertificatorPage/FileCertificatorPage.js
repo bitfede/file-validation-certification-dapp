@@ -1,17 +1,18 @@
 //CORE DEPENDENCIES
 import React, { Component } from "react";
+import Particles from 'react-particles-js';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import AuthenticityContract from "../../contracts/Authenticity.json";
 import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 //UI COMPONENTS
-import { faChevronDown, faInfoCircle, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faInfoCircle, faUpload, faStamp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {ListGroup, ListGroupItem, Card, CardBody, Button } from 'shards-react'
 
 // assets & style
-
+import particlesConfig from '../../assets/backgrParticlesConfig.json'
 import "./FileCertificatorPage.css";
 
 class FileCertificatorPage extends Component {
@@ -134,7 +135,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <p className={"fileSignature fade-in"}>This file's digital signature is: <b>{this.state.fileHash}</b> </p>
+      <p className={"fileSignature fade-in"}>This file's digital signature is: <strong>{this.state.fileHash}</strong> </p>
     )
 
   }
@@ -177,7 +178,7 @@ class FileCertificatorPage extends Component {
     }
 
     return (
-      <Button className={`${this.state.fadeInAnimation} ${this.state.clickAnimation2}`} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
+      <Button className={`${this.state.fadeInAnimation} ${this.state.clickAnimation2} certifyFileFinalBtn`} theme="success" onClick={() => this.certifyFile()} disabled={!this.state.fileHash} style={{padding: '20px'}}><FontAwesomeIcon icon={faStamp} ></FontAwesomeIcon>CERTIFY THIS FILE ON THE BLOCKCHAIN</Button>
     )
   }
 
@@ -187,40 +188,40 @@ class FileCertificatorPage extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
+      <>
+      <Particles
+        canvasClassName={"backParticles"}
+        params={particlesConfig} />
       <div className={"globalCont"} justify="center">
         <section>
-          <div ref={this.vantaRef} id={"heroTitles"}>
+          <div id={"heroTitles"}>
             <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
             <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
-            <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can matematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 400 }) } outline pill size="lg">Upload your file</Button></h3>
+            <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can mathematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
+            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 400 }) } outline pill>CONTINUE</Button></h3>
           </div>
           <div className={"chevronContainer"}>
             <FontAwesomeIcon id={"chevron1"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
-            <FontAwesomeIcon id={"chevron2"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
-            <FontAwesomeIcon id={"chevron3"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
           </div>
 
           <div id="fileUplCont">
-            <Button onClick={() => this.clickAnimation()} className={`certifyBtn ${this.state.clickAnimation}`}><label htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
+            <Button size={'lg'} onClick={() => this.clickAnimation()} className={`certifyBtn ${this.state.clickAnimation}`}><label htmlFor="fileCert"> <FontAwesomeIcon id={"uploadIcon"} icon={faUpload} />Tap here to start uploading</label></Button>
             <input id="fileCert" name="fileCert" type="file" onChange={(e) => this.uploadFile(e)} />
-          </div>
 
-          <div>
             {this.outputFileHash()}
-          </div>
-          <div>
             {this.renderCertifyBtn()}
           </div>
       </section>
 
-      <div >
-          <h2 className={"mainh2title"}>Previous Interactions</h2>
+      <div className={"pastInterContainer"}>
+          <h2 className={"mainh2title pastInteractionsTit"}>Previous Interactions</h2>
           {this.outputHistory()}
-          <p style={{fontSize: '0.5rem', textAlign: 'center'}}>created by fgdf</p>
-        {/*<div><button onClick={() => this.refreshValue()}>Refresh Value</button></div>*/}
       </div>
+      <footer>
+        <p className={"footerText"} style={{fontSize: '0.5rem', textAlign: 'center'}}>created by fgdf</p>
+      </footer>
     </div>
+    </>
     )
   }
 }
