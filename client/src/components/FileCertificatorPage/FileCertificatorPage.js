@@ -57,9 +57,7 @@ class FileCertificatorPage extends Component {
 
     } catch (error) {
       // Catch any errors for any of the above operations.
-      alert(error)
       console.error("[WEB3 ERROR]",error);
-
       this.setState({web3: null, errorBanner: true}, this.forceUpdate)
       return (<h1>connection error</h1>);
     }
@@ -209,9 +207,9 @@ class FileCertificatorPage extends Component {
           <FontAwesomeIcon className={"icon-spin"} size={"lg"} icon={faHourglassHalf} />
           <div className={"connectErrMsg"}>
             <h2>Troubleshooting:</h2>
-            <p>If nothing happens, it means that no web3 compatible wallet was found.</p>
-            <p>You need a <a target="_blank" href="https://tokenmint.io/blog/web-3-enabled-ethereum-wallets-and-browsers.html">web3-enabled wallet</a> in order to interact with the ethereum blockchain through this web interface.</p>
-            <p>We built and tested this dApp using <a target="_blank" href="https://metamask.io/">Metamask</a>. We did not test this dApp with other wallets.</p>
+            <p>If nothing happens, it means that no web3 compatible wallet was found or a connection error occurred.</p>
+            <p>Keep in mind that you need a <a target="_blank" href="https://tokenmint.io/blog/web-3-enabled-ethereum-wallets-and-browsers.html">web3-enabled wallet</a> in order to interact with the ethereum blockchain through this web application.</p>
+            <p>This dApp was built and tested using <a target="_blank" href="https://metamask.io/">Metamask</a>. It was not formally tested with other wallets.</p>
             <p></p>
           </div>
         </div>
