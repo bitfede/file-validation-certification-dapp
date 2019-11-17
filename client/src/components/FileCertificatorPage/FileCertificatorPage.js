@@ -29,7 +29,7 @@ class FileCertificatorPage extends Component {
       clickAnimation: 'shadow-pop-tr',
       clickAnimation2: '',
       fadeInAnimation: 'fade-in',
-      errorBanner: false
+      errorBanner: true
     };
   }
   // TODO
@@ -79,13 +79,23 @@ class FileCertificatorPage extends Component {
   };
 
   getAcctHistory = async () => {
+
     const { accounts, contract } = this.state;
     //call the get method of the contract
-    const response = await contract.methods.getHistory().call({ from: accounts[0] });
+    let response
+    try {
+      response = await contract.methods.getHistory().call({ from: accounts[0] });
+    } catch (e) {
+      console.error("[GETACCTHISTORY ERROR]", e);
+      this.setState({web3: null, errorBanner: true}, this.forceUpdate)
+      // return
+    }
     //debug
     console.log(">>>>>>>>>", response, "getAcctHistory method-----")
-    //update the state with new value
-    this.setState({accountHistory: response})
+    //update the state with new value and unlock the UI
+    this.setState({accountHistory: response, errorBanner: false})
+
+    console.log("KONTRAKT", contract);
   }
 
   arrayBufferToWordArray = (ab) => {
@@ -153,11 +163,15 @@ class FileCertificatorPage extends Component {
   }
 
   outputHistory = () => {
+
+
     if (this.state.accountHistory === null) {
       return (<p>Loading past interactions...</p>)
     } else if (this.state.accountHistory.length === 0) {
       return (<p>You haven't yet certified a file with this metamask address.</p>)
     }
+
+
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
@@ -198,9 +212,22 @@ class FileCertificatorPage extends Component {
     )
   }
 
+  outputParticles() {
+    if (this.state.errorBanner === false) {
+      return (
+        <Particles
+          canvasClassName={"backParticles"}
+          params={particlesConfig}
+        />
+      )
+    }
+  }
+
 
   render() {
-    if (!this.state.web3) {
+
+    //load a loading screen on first load and errors
+    if (!this.state.web3 || this.state.errorBanner === true) {
       return (
         <div className={"globalErrCont"}>
           <p>Loading Web3, accounts, and contract...</p>
@@ -210,16 +237,16 @@ class FileCertificatorPage extends Component {
             <p>If nothing happens, it means that no web3 compatible wallet was found or a connection error occurred.</p>
             <p>Keep in mind that you need a <a target="_blank" href="https://tokenmint.io/blog/web-3-enabled-ethereum-wallets-and-browsers.html">web3-enabled wallet</a> in order to interact with the ethereum blockchain through this web application.</p>
             <p>This dApp was built and tested using <a target="_blank" href="https://metamask.io/">Metamask</a>. It was not formally tested with other wallets.</p>
-            <p></p>
+            <p className={"testnetWarning"}>ALSO MAKE SURE YOU ARE CONNECTED TO THE ROPSTEN TESTNET</p>
           </div>
         </div>
       );
     }
+
+
     return (
       <>
-      <Particles
-        canvasClassName={"backParticles"}
-        params={particlesConfig} />
+      {this.outputParticles()}
       <div className={"globalCont"} justify="center">
         <section>
           <div id={"heroTitles"}>

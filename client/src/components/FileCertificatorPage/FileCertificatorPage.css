@@ -258,6 +258,11 @@
     animation-delay: 5s;
 }
 
+.testnetWarning {
+  font-weight: 700;
+  color: red;
+}
+
 
 /*
   DESKTOP STYLES

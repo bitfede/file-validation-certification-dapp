@@ -111,13 +111,13 @@ class NavBar extends Component {
             </Nav>
 
             <Nav navbar className="ml-auto">
-              <NavItem>
+{/*              <NavItem>
                 <NavLink className={"theNavLink"} href="#">
                   <FontAwesomeIcon icon={faInfoCircle} />
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
-                <NavLink className={"theNavLink"} href="#">
+                <NavLink className={"theNavLink"} href="/">
                   <FontAwesomeIcon icon={faHome} />
                 </NavLink>
               </NavItem>

@@ -1,3 +1,7 @@
+/*
+ PALETTE  https://colorwise.io/172665/digital-agency-search-by-fulfilli
+ */
+
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Saira:400,500,700&display=swap');
 
 p {
@@ -42,6 +46,13 @@ h1,h2,h3,h4,h5,h6 {
 
 .footerText {
   margin-top: 5vh;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.footerText2 {
+  margin-top: 0;
   font-size: 0.7rem;
   text-align: center;
 }

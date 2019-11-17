@@ -32,7 +32,8 @@ class App extends Component {
       </Router>
       <footer>
         <p className={"footerText"}>© 2020 | Made by <a target="_blank" href={"http://defaverifederi.co"}>Federico De Faveri</a></p>
-      </footer>
+        <p className={"footerText2"}>A <a target="_blank" href="https://blockchainlion.com">BlockchainLion</a> Project. Supported by <a target="_blank" href={"https://keenn.com"}>Keenn</a> R&D.</p>
+    </footer>
       </div>
     );
   }

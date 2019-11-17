@@ -51,6 +51,8 @@ class AboutPage extends Component {
           <p className={"aboutPara"}>And many more examples...</p>
           <h2 className={"h2Titles"}>Work in progress</h2>
           <p className={"aboutPara"}>I am developing this dapp on my free time, now it is in beta and running on a testnet.</p>
+          <h2 className={"h2Titles"}>Thanks</h2>
+          <p className={"aboutPara"}>Special thanks to the <a target="_blank" href="https://keenn.com">Keenn</a> agency for the engineering support.</p>
         </div>
       </>
     )
