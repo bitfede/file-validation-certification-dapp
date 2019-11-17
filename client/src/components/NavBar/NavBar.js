@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 // UI COMPONENTS
-import { faSearch, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faInfoCircle, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Navbar,
@@ -111,11 +111,16 @@ class NavBar extends Component {
             </Nav>
 
             <Nav navbar className="ml-auto">
-            <NavItem>
-              <NavLink className={"theNavLink"} href="#">
-                <FontAwesomeIcon icon={faInfoCircle} />
-              </NavLink>
-            </NavItem>
+              <NavItem>
+                <NavLink className={"theNavLink"} href="#">
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className={"theNavLink"} href="#">
+                  <FontAwesomeIcon icon={faHome} />
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
       </Navbar>

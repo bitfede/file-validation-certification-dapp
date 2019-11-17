@@ -41,18 +41,9 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .footerText {
-  margin-top: 3.7vh;
+  margin-top: 5vh;
   font-size: 0.7rem;
   text-align: center;
 }
 
 /* END AUTHOR WRITTEN STYLES */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

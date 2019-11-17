@@ -7,7 +7,7 @@ import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 //UI COMPONENTS
-import { faChevronDown, faInfoCircle, faUpload, faStamp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faInfoCircle, faUpload, faStamp, faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {ListGroup, ListGroupItem, Card, CardBody, Button } from 'shards-react'
 
@@ -28,7 +28,8 @@ class FileCertificatorPage extends Component {
       fileSize: null,
       clickAnimation: 'shadow-pop-tr',
       clickAnimation2: '',
-      fadeInAnimation: 'fade-in'
+      fadeInAnimation: 'fade-in',
+      errorBanner: false
     };
   }
   // TODO
@@ -56,8 +57,11 @@ class FileCertificatorPage extends Component {
 
     } catch (error) {
       // Catch any errors for any of the above operations.
+      alert(error)
+      throw new Error(error)
+      console.error("[WEB3 ERROR]",error);
+      this.setState({web3: null, errorBanner: true})
       return (<h1>connection error</h1>);
-      console.error(error);
     }
   };
 
@@ -199,7 +203,19 @@ class FileCertificatorPage extends Component {
 
   render() {
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+        <div className={"globalErrCont"}>
+          <p>Loading Web3, accounts, and contract...</p>
+          <FontAwesomeIcon className={"icon-spin"} size={"lg"} icon={faHourglassHalf} />
+          <div className={"connectErrMsg"}>
+            <h2>Troubleshooting:</h2>
+            <p>If nothing happens, it means that no web3 compatible wallet was found.</p>
+            <p>You need a <a target="_blank" href="https://tokenmint.io/blog/web-3-enabled-ethereum-wallets-and-browsers.html">web3-enabled wallet</a> in order to interact with the ethereum blockchain through this web interface.</p>
+            <p>We built and tested this dApp using <a target="_blank" href="https://metamask.io/">Metamask</a>. We did not test this dApp with other wallets.</p>
+            <p></p>
+          </div>
+        </div>
+      );
     }
     return (
       <>
