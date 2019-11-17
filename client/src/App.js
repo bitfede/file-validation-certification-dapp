@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import FileCertificatorPage from './components/FileCertificatorPage/FileCertificatorPage'
 import NavBar from './components/NavBar/NavBar'
 import FaqPage from './components/FaqPage/FaqPage'
+import AboutPage from './components/AboutPage/AboutPage'
 
 import AuthenticityContract from "./contracts/Authenticity.json";
 
@@ -26,6 +27,7 @@ class App extends Component {
       <Router>
       <Route exact path="/" component={FileCertificatorPage} />
       <Route path="/faq" component={FaqPage} />
+      <Route path="/about" component={AboutPage} />
 
       </Router>
       <footer>

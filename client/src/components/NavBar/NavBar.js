@@ -71,13 +71,13 @@ class NavBar extends Component {
           <Collapse open={this.state.collapseOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/faq">
+                <NavLink className={"theNavLink"} href="/faq">
                   FAQs
                 </NavLink>
               </NavItem>
 
               <NavItem>
-                <NavLink href="/about">
+                <NavLink className={"theNavLink"} href="/about">
                   About
                 </NavLink>
               </NavItem>
@@ -112,7 +112,7 @@ class NavBar extends Component {
 
             <Nav navbar className="ml-auto">
             <NavItem>
-              <NavLink href="#">
+              <NavLink className={"theNavLink"} href="#">
                 <FontAwesomeIcon icon={faInfoCircle} />
               </NavLink>
             </NavItem>

@@ -5,10 +5,9 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 //UI COMPONENTS
 
 // assets & style
-import "./FaqPage.css";
-import faqData from './faqs.json'
+import "./AboutPage.css";
 
-class FaqPage extends Component {
+class AboutPage extends Component {
 
   constructor() {
     super()
@@ -33,38 +32,20 @@ class FaqPage extends Component {
 
   // UI RENDER FX
 
-  outputFaq() {
-
-    let faqs = faqData.map( (faq) => {
-        return (
-          <div className={"questionAnswerCont"}>
-            <p className={"question"}><span>Q)</span> <strong>{faq.q}</strong></p>
-            <p className={"answer"}><span>A)</span> {faq.a}</p>
-          </div>
-        )
-    })
-
-    return (
-      <div>
-        {faqs}
-      </div>
-    )
-  }
-
   render() {
 
 
     return (
       <>
         <div id={"globalCont"}>
-          <h1 id={"mainFaqTitle"}>Frequently Asked Questions</h1>
-
-          {this.outputFaq()}
-
+          <h1 id={"mainAboutTitle"}>About</h1>
+          <p className={"aboutPara1"}>This project was built to learn and practice ethereum dapp development concepts.</p>
+          <p>I then realized how clever the use of blockchain is for basic notarization of files.</p>
+          <h2 className={"h2Titles"}>What is it</h2>
         </div>
       </>
     )
   }
 }
 
-export default FaqPage
+export default AboutPage
