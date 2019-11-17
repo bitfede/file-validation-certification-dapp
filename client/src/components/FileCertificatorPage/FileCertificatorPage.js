@@ -58,9 +58,9 @@ class FileCertificatorPage extends Component {
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(error)
-      throw new Error(error)
       console.error("[WEB3 ERROR]",error);
-      this.setState({web3: null, errorBanner: true})
+
+      this.setState({web3: null, errorBanner: true}, this.forceUpdate)
       return (<h1>connection error</h1>);
     }
   };
