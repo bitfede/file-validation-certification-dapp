@@ -1,27 +1,28 @@
-pragma solidity ^0.5.0;
-pragma experimental ABIEncoderV2;
+pragma solidity ^0.5.13;
 
 contract Authenticity {
 
+  event FileCertified(address author, string fileHash, uint timestamp, uint fileSize, string fileExtension);
+
   struct FileCertificate {
-    uint fileSize;
+    address author;
     string fileHash;
     uint timestamp;
+    uint fileSize;
+    string fileExtension;
   }
 
-  mapping (address => FileCertificate[]) usersMap;
+  mapping (string => FileCertificate) fileCertificatesMap;
 
-  function certifyFile(uint fileSize, string memory fileHash) public payable {
-    FileCertificate memory newCertificate = FileCertificate(fileSize, fileHash, block.timestamp);
-    usersMap[msg.sender].push(newCertificate);
+  function certifyFile(uint fileSize, string memory fileHash, string memory fileExtension) public payable {
+    FileCertificate memory newFileCertificate = FileCertificate(msg.sender, fileHash, block.timestamp, fileSize, fileExtension);
+    fileCertificatesMap[fileHash] = newFileCertificate;
+    emit FileCertified(msg.sender, fileHash, block.timestamp, fileSize, fileExtension);
   }
 
-  function getHistory() public view returns(FileCertificate[] memory) {
-    uint historyLen = usersMap[msg.sender].length;
-    FileCertificate[] memory retValue = new FileCertificate[](historyLen);
-    for (uint i = 0; i < historyLen; i++) {
-        retValue[i] = usersMap[msg.sender][i];
-    }
-    return retValue;
+  function verifyFile(string memory fileHash) public view returns (address, string memory, uint, uint, string memory) {
+    return (fileCertificatesMap[fileHash].author, fileCertificatesMap[fileHash].fileHash, fileCertificatesMap[fileHash].timestamp, fileCertificatesMap[fileHash].fileSize, fileCertificatesMap[fileHash].fileExtension);
   }
+
+
 }
