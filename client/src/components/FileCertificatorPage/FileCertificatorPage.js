@@ -26,6 +26,7 @@ class FileCertificatorPage extends Component {
       contract: null,
       fileHash: null,
       fileSize: null,
+      fileExt: null,
       clickAnimation: 'shadow-pop-tr',
       clickAnimation2: '',
       fadeInAnimation: 'fade-in',
@@ -33,7 +34,7 @@ class FileCertificatorPage extends Component {
     };
   }
   // TODO
-  // make event listener for addr and list addr tx filter by `to:contract_acct`
+  // make event listener for addr and list addr tx filter by `from: user_addr`
 
 
   componentDidMount = async () => {
@@ -108,16 +109,17 @@ class FileCertificatorPage extends Component {
   }
 
   uploadFile = async (e) => {
-    console.log("*******")
+    console.log("*******", e.target.files[0].name)
     const uplFile = e.target.files[0]
     const uplFileSize = uplFile.size
+    const uplFileExt = uplFile.name.split('.').pop()
     console.log(uplFile)
     const reader = new FileReader();
     reader.onload = (e) => {
       var arrayBuffer = e.target.result;
 
         var hashValue = CryptoJS.SHA256(this.arrayBufferToWordArray(arrayBuffer)).toString(CryptoJS.enc.Hex);
-        this.setState({fileHash: hashValue, fileSize: uplFileSize}, () => {console.log("STATE >>", this.state)})
+        this.setState({fileHash: hashValue, fileSize: uplFileSize, fileExt: uplFileExt}, () => {console.log("STATE >>", this.state)})
     }
     reader.readAsArrayBuffer(uplFile);
   }
