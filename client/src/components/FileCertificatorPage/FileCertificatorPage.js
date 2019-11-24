@@ -26,7 +26,7 @@ class FileCertificatorPage extends Component {
       contract: null,
       fileHash: null,
       fileSize: null,
-      fileExt: null,
+      fileExtension: null,
       clickAnimation: 'shadow-pop-tr',
       clickAnimation2: '',
       fadeInAnimation: 'fade-in',
@@ -68,12 +68,13 @@ class FileCertificatorPage extends Component {
     const { accounts, contract } = this.state;
     const dataToWrite = {
       fileSize: this.state.fileSize,
-      fileHash: this.state.fileHash
+      fileHash: this.state.fileHash,
+      fileExtension: this.state.fileExtension
     }
     //triggers UI animation
     this.clickAnimation2()
     // Stores the file info into the blockchain
-    await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash).send({ from: accounts[0] });
+    await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash, dataToWrite.fileExtension).send({ from: accounts[0] });
 
     // // Get the value from the contract to prove it worked.
     this.getAcctHistory();
@@ -85,14 +86,16 @@ class FileCertificatorPage extends Component {
     //call the get method of the contract
     let response
     try {
-      response = await contract.methods.getHistory().call({ from: accounts[0] });
+      response = await contract.getPastEvents("FileCertified", {
+        filter: { author: accounts[0], fromBlock: 0, toBlock: 'latest' }
+      });
     } catch (e) {
       console.error("[GETACCTHISTORY ERROR]", e);
       this.setState({web3: null, errorBanner: true}, this.forceUpdate)
       // return
     }
     //debug
-    console.log(">>>>>>>>>", response, "getAcctHistory method-----")
+    console.log(">>>>>>>>>", response, "getAcctHistory EVENTS>-----")
     //update the state with new value and unlock the UI
     this.setState({accountHistory: response, errorBanner: false})
 
@@ -112,14 +115,14 @@ class FileCertificatorPage extends Component {
     console.log("*******", e.target.files[0].name)
     const uplFile = e.target.files[0]
     const uplFileSize = uplFile.size
-    const uplFileExt = uplFile.name.split('.').pop()
+    const uplFileExtension = uplFile.name.split('.').pop()
     console.log(uplFile)
     const reader = new FileReader();
     reader.onload = (e) => {
       var arrayBuffer = e.target.result;
 
         var hashValue = CryptoJS.SHA256(this.arrayBufferToWordArray(arrayBuffer)).toString(CryptoJS.enc.Hex);
-        this.setState({fileHash: hashValue, fileSize: uplFileSize, fileExt: uplFileExt}, () => {console.log("STATE >>", this.state)})
+        this.setState({fileHash: hashValue, fileSize: uplFileSize, fileExtension: uplFileExtension}, () => {console.log("STATE >>", this.state)})
     }
     reader.readAsArrayBuffer(uplFile);
   }
@@ -166,7 +169,6 @@ class FileCertificatorPage extends Component {
 
   outputHistory = () => {
 
-
     if (this.state.accountHistory === null) {
       return (<p>Loading past interactions...</p>)
     } else if (this.state.accountHistory.length === 0) {
@@ -177,13 +179,13 @@ class FileCertificatorPage extends Component {
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
-      const truncatedHash = interaction.fileHash.substring(0, 7)
-      let dateStamp = new Date(interaction.timestamp * 1000)
+      const truncatedHash = interaction.returnValues.fileHash.substring(0, 7)
+      let dateStamp = new Date(interaction.returnValues.timestamp * 1000)
       return (
         <Card className={"listItemTx"} key={counter++}>
           <CardBody>
             <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
-            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.fileSize}</b> bytes</p>
+            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.returnValues.fileSize}</b> bytes</p>
             <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">✍️</span>  Digital Signature: <b>{truncatedHash}...</b></p>
           </CardBody>
 
