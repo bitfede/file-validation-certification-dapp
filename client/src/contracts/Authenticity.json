@@ -2922,10 +2922,49 @@
   },
   "networks": {
     "3": {
-      "events": {},
+      "events": {
+        "0x7233f1f5a296ceee040647096ea8b83745c99e3a2e329004608ae07ac3b9ea2c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "author",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "fileHash",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "fileSize",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "fileExtension",
+              "type": "string"
+            }
+          ],
+          "name": "FileCertified",
+          "type": "event",
+          "signature": "0x7233f1f5a296ceee040647096ea8b83745c99e3a2e329004608ae07ac3b9ea2c"
+        }
+      },
       "links": {},
-      "address": "0x03a54C1903827Bac1b3A3377928912d7E4f413aA",
-      "transactionHash": "0x5d6b6471922c8d2161f14dd65d5119e2ba580475e39d8392525389a10cef0eac"
+      "address": "0x1db6ac51f59f5B68AD688F16B1D693b343Bb973B",
+      "transactionHash": "0xbcd012fbfcad88d764ec2d973f3e790a30eee4a22380aff2f1af741a21b0d957"
     },
     "5777": {
       "events": {
@@ -2974,7 +3013,8 @@
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-11-24T17:50:50.893Z",
+  "updatedAt": "2019-11-25T23:25:20.082Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
