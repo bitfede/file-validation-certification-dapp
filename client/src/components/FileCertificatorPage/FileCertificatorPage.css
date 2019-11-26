@@ -1,3 +1,7 @@
+b {
+  font-weight: 700 !important;
+}
+
 .globalCont {
   margin-left: 5vw;
   margin-right: 5vw;
@@ -214,11 +218,26 @@
   text-align: start;
 }
 
+.cardBodyCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.historyTxFileIcon {
+  width: 60px;
+  margin-right: 1.87rem;
+}
+
+.historyTxDataPointsCont {
+  width: 65vw;
+}
+
 .listItemTx {
   padding: 5px;
   margin-bottom: 30px;
   border-left: 3px solid;
-  /* border-radius: 20px; */
+  width: 90vw;
 }
 
 .listItemTx:hover {
@@ -226,10 +245,19 @@
 }
 
 .historyTxDataPnt {
-  /* width: 240px; */
-  margin: 0;
+  max-width: 52vw;
+  margin: 3px;
   word-wrap: break-word;
 }
+
+.historyTxDataPnt svg {
+  width: 8px;
+}
+
+.getFileCertificate {
+  margin-top: 2vh;
+}
+
 
 /* error */
 
@@ -285,9 +313,13 @@
    }
 
    .listItemTx {
-     margin-right: 30px;
-     width: 25vw;
-     height: 30vh;
+     width: 80vw;
+   }
+
+   .historyTxFileIcon {
+     width: 80px;
+     margin-right: 5rem;
+     margin-left: 4rem;
    }
 
  }

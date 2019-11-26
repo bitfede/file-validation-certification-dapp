@@ -7,11 +7,12 @@ import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
 
 //UI COMPONENTS
-import { faChevronDown, faInfoCircle, faUpload, faStamp, faHourglassHalf } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faInfoCircle, faUpload, faStamp, faHourglassHalf, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {ListGroup, ListGroupItem, Card, CardBody, Button } from 'shards-react'
 
 // assets & style
+import extensions from '../../assets/fileIcons/'
 import particlesConfig from '../../assets/backgrParticlesConfig.json'
 import "./FileCertificatorPage.css";
 
@@ -87,7 +88,9 @@ class FileCertificatorPage extends Component {
     let response
     try {
       response = await contract.getPastEvents("FileCertified", {
-        filter: { author: accounts[0], fromBlock: 0, toBlock: 'latest' }
+        filter: { author: accounts[0] },
+        fromBlock: 6848381,
+        toBlock: 'latest'
       });
     } catch (e) {
       console.error("[GETACCTHISTORY ERROR]", e);
@@ -154,7 +157,7 @@ class FileCertificatorPage extends Component {
     return (
       <div className={"stepsContainer"}>
         <h4 className={"tutorialSteps"}>Step 2:</h4>
-        <p className={"tutorialParags"}>Review the metadata</p>
+        <p className={"tutorialParags"}>Review the metadata:</p>
         <div className={"fileMetadataCont"}>
           <p className={"fileSignature fade-in"}>
             <u>SHA256 DIGITAL SIGNATURE:</u> <strong>{this.state.fileHash}</strong>
@@ -175,18 +178,36 @@ class FileCertificatorPage extends Component {
       return (<p>You haven't yet certified a file with this metamask address.</p>)
     }
 
-
     let counter = 0;
     const interactions = this.state.accountHistory.map( (interaction) => {
       console.log("--> ", interaction)
-      const truncatedHash = interaction.returnValues.fileHash.substring(0, 7)
+      let truncatedHash, iconImage;
+      truncatedHash = interaction.returnValues.fileHash
       let dateStamp = new Date(interaction.returnValues.timestamp * 1000)
+      if (!extensions[interaction.returnValues.fileExtension]) {
+        iconImage = extensions.file
+      } else {
+        iconImage = extensions[interaction.returnValues.fileExtension]
+      }
+      console.log("IMAGEGEEE", iconImage);
       return (
         <Card className={"listItemTx"} key={counter++}>
           <CardBody>
-            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
-            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.returnValues.fileSize}</b> bytes</p>
-            <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">✍️</span>  Digital Signature: <b>{truncatedHash}...</b></p>
+            <div className={"cardBodyCont"}>
+              <div>
+                <img src={iconImage} className={"historyTxFileIcon"} />
+              </div>
+              <div className={"historyTxDataPointsCont"}>
+                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
+                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.returnValues.fileSize} bytes</b></p>
+                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">🔐</span> Digital Signature: <b>{truncatedHash}</b></p>
+                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📒</span> Blockchain Transaction ID: <a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${interaction.transactionHash}`}><b>{interaction.transactionHash}</b></a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
+                <div>
+                  <Button className={"getFileCertificate"}>Get File Certificate</Button>
+                </div>
+            </div>
+            </div>
+
           </CardBody>
 
       </Card>
@@ -257,7 +278,7 @@ class FileCertificatorPage extends Component {
             <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
             <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
             <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can mathematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 400 }) } outline pill>CONTINUE</Button></h3>
+            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 500 }) } outline pill>CONTINUE</Button></h3>
           </div>
           <div className={"chevronContainer"}>
             <FontAwesomeIcon id={"chevron1"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
