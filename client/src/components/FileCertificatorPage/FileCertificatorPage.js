@@ -9,11 +9,11 @@ import CryptoJS from "crypto-js";
 //UI COMPONENTS
 import { faChevronDown, faInfoCircle, faUpload, faStamp, faHourglassHalf, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {ListGroup, ListGroupItem, Card, CardBody, Button } from 'shards-react'
+import {ListGroup, ListGroupItem, Card, CardBody, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'shards-react';
 
 // assets & style
-import extensions from '../../assets/fileIcons/'
-import particlesConfig from '../../assets/backgrParticlesConfig.json'
+import extensions from '../../assets/fileIcons/';
+import particlesConfig from '../../assets/backgrParticlesConfig.json';
 import "./FileCertificatorPage.css";
 
 class FileCertificatorPage extends Component {
@@ -31,11 +31,11 @@ class FileCertificatorPage extends Component {
       clickAnimation: 'shadow-pop-tr',
       clickAnimation2: '',
       fadeInAnimation: 'fade-in',
-      errorBanner: true
+      errorBanner: true,
+      isTxModalOpen: false,
+      modalContent: null
     };
   }
-  // TODO
-  // make event listener for addr and list addr tx filter by `from: user_addr`
 
 
   componentDidMount = async () => {
@@ -146,6 +146,23 @@ class FileCertificatorPage extends Component {
     }, 500)
   }
 
+  toggleTxModal(keyElement) {
+    let { isTxModalOpen } = this.state
+    if (isTxModalOpen === false) {
+      isTxModalOpen = true
+      this.setState({
+        isTxModalOpen,
+        modalContent: this.state.accountHistory[keyElement]
+      })
+    } else {
+      isTxModalOpen = false
+      this.setState({
+        isTxModalOpen,
+        modalContent: null
+      })
+    }
+  }
+
 
   // UI RENDER FX
 
@@ -178,39 +195,37 @@ class FileCertificatorPage extends Component {
       return (<p>You haven't yet certified a file with this metamask address.</p>)
     }
 
-    let counter = 0;
-    const interactions = this.state.accountHistory.map( (interaction) => {
+    const interactions = this.state.accountHistory.map( (interaction, key) => {
       console.log("--> ", interaction)
-      let truncatedHash, iconImage;
-      truncatedHash = interaction.returnValues.fileHash
+      let myFileHash, iconImage, transactionID;
+      myFileHash = interaction.returnValues.fileHash.substring(0, 15) + '...'
+      transactionID = interaction.transactionHash.substring(0, 15) + '...'
       let dateStamp = new Date(interaction.returnValues.timestamp * 1000)
       if (!extensions[interaction.returnValues.fileExtension]) {
         iconImage = extensions.file
       } else {
         iconImage = extensions[interaction.returnValues.fileExtension]
       }
-      console.log("IMAGEGEEE", iconImage);
       return (
-        <Card className={"listItemTx"} key={counter++}>
-          <CardBody>
-            <div className={"cardBodyCont"}>
-              <div>
-                <img src={iconImage} className={"historyTxFileIcon"} />
-              </div>
-              <div className={"historyTxDataPointsCont"}>
-                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
-                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.returnValues.fileSize} bytes</b></p>
-                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">🔐</span> Digital Signature: <b>{truncatedHash}</b></p>
-                <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📒</span> Blockchain Transaction ID: <a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${interaction.transactionHash}`}><b>{interaction.transactionHash}</b></a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
+          <Card className={"listItemTx"}  key={key}>
+            <CardBody>
+              <div className={"cardBodyCont"}>
                 <div>
-                  <Button className={"getFileCertificate"}>Get File Certificate</Button>
+                  <img src={iconImage} className={"historyTxFileIcon"} />
                 </div>
-            </div>
-            </div>
+                <div className={"historyTxDataPointsCont"}>
+                  <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">⌚️</span> Date: <b>{dateStamp.toUTCString()}</b></p>
+                  <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📦</span> File Size: <b>{interaction.returnValues.fileSize} bytes</b></p>
+                  <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">🔐</span> Digital Signature: <b>{myFileHash}</b></p>
+                  <p className={"historyTxDataPnt"}><span role="img" aria-label="asd">📒</span> Blockchain Transaction ID: <a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${interaction.transactionHash}`}><b>{transactionID}</b></a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
+                  <div>
+                    <Button onClick={() => this.toggleTxModal(key)} className={"getFileCertificate"}>Get Full Information</Button>
+                  </div>
+              </div>
+              </div>
 
-          </CardBody>
-
-      </Card>
+            </CardBody>
+          </Card>
       )
     })
 
@@ -248,6 +263,37 @@ class FileCertificatorPage extends Component {
     }
   }
 
+  generateModalContent() {
+    const { modalContent } = this.state
+
+    if (modalContent === null) {
+      return null
+    }
+
+    console.log("MODALCONTENTTT", modalContent);
+
+    return (
+      <Modal animation={true} open={this.state.isTxModalOpen} toggle={() => this.toggleTxModal()}>
+        <ModalHeader closeAriaLabel={"clusetubbon"}>
+          File Notarization Details
+        </ModalHeader>
+        <ModalBody className={"modalBodyClass"}>
+
+          <p><b>SUBMISSION DATE:</b></p>
+          <p>{modalContent.returnValues.timestamp}</p>
+          <p><b>FILE HASH:</b></p>
+          <p>{modalContent.returnValues.timestamp}</p>
+
+
+        </ModalBody>
+        <ModalFooter>
+          <Button>Download PDF Certificate</Button>
+          <Button onClick={() => this.toggleTxModal()}>Close</Button>
+        </ModalFooter>
+      </Modal>
+    )
+  }
+
 
   render() {
 
@@ -278,7 +324,7 @@ class FileCertificatorPage extends Component {
             <h1 className={"mainh1title"}>Decentralized File Notarization</h1>
             <h2 className={"mainh2title"}>Certify the Existence of any file</h2>
             <p className={"introPara"}>By writing a timestamped digital signature of your file into the ethereum blockchain, you can mathematically prove its existence and its integrity over time. <a href="https://en.wikipedia.org/wiki/File_verification">Click here to learn more</a>.</p>
-            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 500 }) } outline pill>CONTINUE</Button></h3>
+            <h3 className={"mainh3title h3titleCta"}><Button onClick={ () => window.scrollTo({'behavior': 'smooth', 'left': 0, 'top': 450 }) } outline pill>CONTINUE</Button></h3>
           </div>
           <div className={"chevronContainer"}>
             <FontAwesomeIcon id={"chevron1"} className={"chevrons shake-vertical"} size='lg' icon={faChevronDown} />
@@ -305,6 +351,8 @@ class FileCertificatorPage extends Component {
       </div>
 
     </div>
+
+      { this.generateModalContent() }
     </>
     )
   }

@@ -258,6 +258,10 @@ b {
   margin-top: 2vh;
 }
 
+.modalBodyClass p {
+  margin-bottom: 0;
+}
+
 
 /* error */
 
