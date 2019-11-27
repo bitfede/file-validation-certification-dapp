@@ -292,7 +292,7 @@ class FileCertificatorPage extends Component {
           <p><b>File Extension:</b></p>
           <p>{modalContent.returnValues.fileExtension}</p>
           <p><b>Blockchain Transaction:</b></p>
-          <p className={"longParaTag"}><a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${modalContent.transactionHash}`}><b>{modalContent.transactionHash}</b></a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
+          <p className={"longParaTag"}><a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${modalContent.transactionHash}`}>{modalContent.transactionHash}</a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
 
         </ModalBody>
         <ModalFooter>
