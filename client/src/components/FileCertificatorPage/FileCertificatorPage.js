@@ -163,6 +163,10 @@ class FileCertificatorPage extends Component {
     }
   }
 
+  timestampToDateStr(timestamp) {
+    let theDate = new Date(timestamp * 1000)
+    return theDate.toUTCString()
+  }
 
   // UI RENDER FX
 
@@ -279,16 +283,21 @@ class FileCertificatorPage extends Component {
         </ModalHeader>
         <ModalBody className={"modalBodyClass"}>
 
-          <p><b>SUBMISSION DATE:</b></p>
-          <p>{modalContent.returnValues.timestamp}</p>
-          <p><b>FILE HASH:</b></p>
-          <p>{modalContent.returnValues.timestamp}</p>
-
+          <p><b>Submission Date:</b></p>
+          <p>{this.timestampToDateStr(modalContent.returnValues.timestamp)}</p>
+          <p><b>SHA256 File Hash:</b></p>
+          <p><pre className={"modelHashData"}>{modalContent.returnValues.fileHash}</pre></p>
+          <p><b>File Size:</b></p>
+          <p>{modalContent.returnValues.fileSize}</p>
+          <p><b>File Extension:</b></p>
+          <p>{modalContent.returnValues.fileExtension}</p>
+          <p><b>Blockchain Transaction:</b></p>
+          <p className={"longParaTag"}><a target={"_blank"} href={`https://ropsten.etherscan.io/tx/${modalContent.transactionHash}`}><b>{modalContent.transactionHash}</b></a> <FontAwesomeIcon icon={faExternalLinkAlt} /></p>
 
         </ModalBody>
         <ModalFooter>
-          <Button>Download PDF Certificate</Button>
-          <Button onClick={() => this.toggleTxModal()}>Close</Button>
+          <Button theme={"success"}>Download PDF Certificate</Button>
+          <Button theme={"danger"} onClick={() => this.toggleTxModal()}>Close</Button>
         </ModalFooter>
       </Modal>
     )
