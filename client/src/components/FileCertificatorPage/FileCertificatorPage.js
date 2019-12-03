@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import AuthenticityContract from "../../contracts/Authenticity.json";
 import getWeb3 from "../../utils/getWeb3";
 import CryptoJS from "crypto-js";
+import jsPDF from 'jspdf';
 
 //UI COMPONENTS
 import { faChevronDown, faInfoCircle, faUpload, faStamp, faHourglassHalf, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +16,7 @@ import {ListGroup, ListGroupItem, Card, CardBody, Button, Modal, ModalBody, Moda
 import extensions from '../../assets/fileIcons/';
 import particlesConfig from '../../assets/backgrParticlesConfig.json';
 import "./FileCertificatorPage.css";
+import certificateTemplateJpg from '../../utils/getCertTemplate';
 
 class FileCertificatorPage extends Component {
 
@@ -168,6 +170,25 @@ class FileCertificatorPage extends Component {
     return theDate.toUTCString()
   }
 
+
+  generatePdfCert() {
+    const { modalContent } = this.state
+
+    if (modalContent === null) {
+      return null
+    }
+
+    let doc = new jsPDF()
+
+    doc.addImage(certificateTemplateJpg, 'JPEG', 0, 0, 210, 297)
+    doc.setFontSize(10)
+    doc.text(this.timestampToDateStr(modalContent.returnValues.timestamp), 70, 93)
+
+
+    doc.save('test.pdf')
+
+  }
+
   // UI RENDER FX
 
   outputFileHash = () => {
@@ -296,7 +317,7 @@ class FileCertificatorPage extends Component {
 
         </ModalBody>
         <ModalFooter>
-          <Button theme={"success"}>Download PDF Certificate</Button>
+          <Button theme={"success"} onClick={() => this.generatePdfCert()}>Download PDF Certificate</Button>
           <Button theme={"danger"} onClick={() => this.toggleTxModal()}>Close</Button>
         </ModalFooter>
       </Modal>
