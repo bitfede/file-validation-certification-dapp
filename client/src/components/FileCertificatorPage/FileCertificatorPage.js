@@ -286,7 +286,7 @@ class FileCertificatorPage extends Component {
           <p><b>Submission Date:</b></p>
           <p>{this.timestampToDateStr(modalContent.returnValues.timestamp)}</p>
           <p><b>SHA256 File Hash:</b></p>
-          <p><pre className={"modelHashData"}>{modalContent.returnValues.fileHash}</pre></p>
+          <pre className={"modelHashData"}>{modalContent.returnValues.fileHash}</pre>
           <p><b>File Size:</b></p>
           <p>{modalContent.returnValues.fileSize}</p>
           <p><b>File Extension:</b></p>
