@@ -79,6 +79,9 @@ class FileCertificatorPage extends Component {
     // Stores the file info into the blockchain
     await contract.methods.certifyFile(dataToWrite.fileSize, dataToWrite.fileHash, dataToWrite.fileExtension).send({ from: accounts[0] });
 
+    //alert user that everything went ok
+    alert('The file signature has been sent to the blockchain! It might take some time for the transaction to be mined and included in the blockchain. Check back later!')
+
     // // Get the value from the contract to prove it worked.
     this.getAcctHistory();
   };
