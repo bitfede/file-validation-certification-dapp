@@ -178,14 +178,21 @@ class FileCertificatorPage extends Component {
       return null
     }
 
+    const fileCertName = `file-${modalContent.transactionHash.substring(0, 6)}-cerfificate.pdf`
     let doc = new jsPDF()
 
     doc.addImage(certificateTemplateJpg, 'JPEG', 0, 0, 210, 297)
     doc.setFontSize(10)
-    doc.text(this.timestampToDateStr(modalContent.returnValues.timestamp), 70, 93)
 
+    doc.text(this.timestampToDateStr(modalContent.returnValues.timestamp), 80, 93)
+    doc.text(modalContent.returnValues.author, 60, 110.5)
+    doc.text(modalContent.returnValues.fileExtension, 78, 122.5)
+    doc.text(modalContent.returnValues.fileSize, 107, 122.5)
+    doc.text(modalContent.returnValues.fileHash, 42, 148)
+    doc.text(modalContent.transactionHash, 40, 166)
+    doc.text(modalContent.blockNumber.toString(), 149, 184)
 
-    doc.save('test.pdf')
+    doc.save(fileCertName)
 
   }
 
